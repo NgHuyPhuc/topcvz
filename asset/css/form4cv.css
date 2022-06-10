@@ -1,0 +1,44 @@
+
+.container-form4-cv {
+    background-color: #f8f8f8;
+    margin: 30px;
+    display: flex;
+}
+
+.container-form4-cv h3{
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.container-form4-cv p{
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.form-4-cv-gioithieu{
+    font-size: 1.6rem;
+}
+
+.form-4-cv-gioithieu .gioithieu-ten {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.form-4-gtinp{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-4-gtinp input{
+    margin: 8px 0;
+}
+
+.form-4-muctieu{
+    
+    margin:20px;
+    border-top: 1px solid #333;
+}
+
+.form-4_chung {
+    background-color:var(--white-color);
+}

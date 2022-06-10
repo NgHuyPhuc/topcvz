@@ -1,0 +1,141 @@
+.navbar_list li{
+    padding: 6px ;
+}
+
+.container-title{
+    padding: 20px 0 20px 10px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.contaner-form-td {
+    display: flex;
+    padding-top: 10px;
+}
+
+.contaner-form-td img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.container-hieuqua{
+    background-color: var(--white-color);
+    margin: 10px 0;
+    border-radius: 10px;
+    padding-bottom: 30px;
+}
+
+.container-taikhoan {
+    background-color: var(--white-color);
+    margin: 10px 0;
+    border-radius: 10px;
+    padding-bottom: 30px;
+}
+
+.container-hieuqua h4{
+    font-size: 1.6rem;
+    color: blue;
+    padding: 16px 8px;
+}
+
+
+.container-hq-chitiet{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.container-hq-item{
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    justify-content: space-around;
+    margin:  10px;
+    width: 40%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hq-icon {
+    
+}
+
+.taikhoan-user {
+    display: flex;
+    padding: 12px 10px;
+    align-items: center;
+}
+
+.tk-icon {
+    font-size: 2.6rem;
+    margin-right: 20px;
+}
+
+.xacthuc {
+    font-size: 1.6rem;
+    display:flex ;
+    padding: 12px 10px;
+}
+
+.quyenloi{
+    padding: 0 10px;
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+.capnhat {
+    font-size: 1.6rem;
+    margin: 0 10px;
+    cursor: pointer;
+    padding: 8px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.capnhat1 {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.capnhat1:hover {
+    opacity: 0.8;
+}
+
+.capnhat2:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.capnhat2 {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.dexuat {
+    background-color: var(--white-color);
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+}
+
+.dichvu {
+    background-color: var(--white-color);
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+}
+
+.container-toiuu{
+    background-color: var(--white-color);
+    margin: 10px 0;
+    border-radius: 10px;
+    padding: 10px 10px 30px 10px;
+}
+
+.container-toiuu p{
+    font-size: 1.3rem;
+}

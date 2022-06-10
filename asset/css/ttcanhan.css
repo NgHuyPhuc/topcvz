@@ -1,0 +1,113 @@
+.container_ttcanhan {
+    background-color: #f2f6fc;
+    height: 88vh;
+}
+
+.container-suatt {
+    background-color: #f2f6fc;
+    height: 88vh;
+}
+
+.container_form-tt{
+    padding: 50PX 0;
+    display: flex;
+}
+
+.form-trai {
+    background-color: #fff;
+    width: 100%;
+    padding-bottom: 20px;
+    box-shadow: 0 10px 6px -6px #777;
+    border-radius: 20PX;
+    height: 55vh;
+}
+
+.form-phai {
+    background-color: #fff;
+    width: 100%;
+    padding-bottom: 62px;
+    padding-top: 10px;
+    box-shadow: 0 10px 6px -6px #777;
+    border-radius: 20PX;
+}
+
+.form-thongtin {
+}
+
+.form-thongtin li {
+    list-style: none;
+    font-size: 1.6rem;
+    padding: 10px 0;
+    margin: auto 0;
+}
+
+.form-trai h3{
+    padding: 20px 12px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: #ccc;
+    border-bottom: 1px solid #ddd;
+    border-top: 20px;
+    margin: 0;
+}
+
+.form-trai img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 44px;
+}
+
+.form-trai img:hover{
+    border: 2px solid var(--primary-color);
+}
+
+.chinhsua {
+    font-size: 1.6rem;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.chinhsua a{
+    text-decoration: none;
+    background-color: var(--primary-color);
+    padding: 10px 12px;
+    color: var(--white-color);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.chinhsua input {
+    background-color: var(--primary-color);
+    padding: 8px 20px;
+    color: var(--white-color);
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    margin: 0 10px;
+}
+
+.chinhsua input:hover {
+    opacity: 0.8;
+}
+
+.chinhsua a:hover{
+    opacity: 0.8;
+}
+
+.List-tt{
+    list-style: none;
+}
+
+.List-tt p{
+    font-size: 1.6rem;
+    margin: 5px 0;
+}
+
+.List-tt input{
+    width: 50%;
+    font-size: 1.4rem;
+}

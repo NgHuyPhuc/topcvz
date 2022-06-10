@@ -1,0 +1,84 @@
+.container_chitiet {
+    background-color: #eee;
+}
+
+.container_minimenu {
+    display: flex;
+    padding: 12px;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.container_congty {
+    margin-top: 20px ;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--white-color);
+}
+
+.container_form-viechung {
+    display: flex;
+}
+
+.container_tin {
+    padding: 20px 0;
+}
+
+.container_tin ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.container_tin ul li{
+    margin: 0 8px;
+}
+
+.container_tin ul li a{
+    font-size: 1.6rem;
+    text-decoration:none;
+    color: var(--text-color);
+}
+
+.container_form-viec{
+    background-color: var(--white-color);
+}
+
+.container_form-viechung {
+    margin: 15px;
+}
+
+.container_form-viechung h4{
+    font-size: 1.5rem;
+    padding: 15px;
+    margin: 0;
+}
+
+.container_form-mota {
+    margin: 20px 0;
+}
+
+.container_form-mota li{
+    font-size: 1.4rem;
+    margin: 4px 0;
+}
+
+.container_form-share p{
+    font-size: 1.4rem;
+    margin: 0 25px 20px;
+}
+
+.container_form-share button{
+    font-size: 1.8rem;
+    width: 100%;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.container_form-thongtin {
+    background-color: var(--white-color);
+}
+
+.container_form-lienquan{
+    background-color: var(--white-color);
+}

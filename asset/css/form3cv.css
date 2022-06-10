@@ -1,0 +1,78 @@
+.container-form3-cv {
+    background-color: #f8f8f8;
+    margin: 30px;
+    display: flex;
+}
+
+.container-form3-cv h3{
+    font-size: 1.6rem;
+    padding: 6px 10px;
+    text-transform: uppercase;
+    color: #00b4d8;
+    background-color: #e5f7fb !important;
+}
+
+.backgr-left {
+    background-image: url(https://www.topcv.vn/packages/cvo/templates/hello/assets/images/00B4D8.png);
+    height: 520px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.form-3_thongtin {
+    font-size: 1.4rem;
+    padding: 10px 12px;
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    background-color: #e5f7fb; 
+    color: var(--text-color);
+}
+
+.form-3_thongtin input {
+    margin: 8px 0;
+}
+
+.form3_name {
+    color: #00b4d8;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.kinhnghiem p{
+    font-size: 1.4rem;
+    color: #00b4d8;
+    font-weight: 600;
+}
+
+.hocvan p{
+    font-size: 1.4rem;
+    color: #00b4d8;
+    font-weight: 600;
+}
+
+.form3-huongdan{
+    margin-top: 30px;
+}
+
+.form3-huongdan h2{
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+}
+
+.form3-huongdan p{
+    font-size: 1.6rem;
+}
+
+.form3-huongdan li{
+    font-size: 1.2rem;
+}
+
+.form3-huongdan ul{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+}

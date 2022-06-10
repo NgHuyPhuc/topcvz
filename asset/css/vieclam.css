@@ -1,0 +1,236 @@
+.header_search{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-search {
+    margin: 0 12px;
+}
+
+.header-search input{
+    width: 400px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-search input:hover {
+    border: 1px solid var(--primary-color);
+}
+
+.header-search-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.header-search-item p {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+.header-search-item p:hover {
+    border: 1px solid var(--primary-color);
+}
+
+.header-search-item i {
+    margin-left: 10px;
+}
+
+.header-search-minilist{
+    position: absolute;
+    padding: 0;
+    list-style: none;
+    top: 44px;
+    background-color: var(--white-color);
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 5px;
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    overflow-y: auto;
+    display: none;
+    z-index: 1;
+}
+
+.header-search-item:hover .header-search-minilist{
+    display: block;
+    animation: fakeIn 0.5s linear;
+}
+
+.header-search-item:hover i {
+    color: var(--primary-color);
+}
+
+.header-search-minilist li:hover{
+    background-color: #f8f8f8;
+}
+
+.header_search button{
+    background-color: var(--primary-color);
+    font-size: 1.4rem;
+    color: var(--white-color);
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.header_search button:hover {
+    opacity: 0.8;
+}
+
+/* container_vl */
+.container_vl {
+    background-color: #f6f6f6;
+    padding-bottom: 20px;
+}
+
+.container_vl-title {
+    padding-top: 20px;
+    font-size: 1.6rem;
+}
+
+.container_vl-minititle {
+    font-size: 1.4rem;
+}
+
+
+.slide-form{
+    padding-top: 30px;
+}
+
+.slide-link img{
+    border-radius: 10px;
+    height: 400px;
+}
+
+.slide-icon{
+    font-size: 24px;
+    color: var(--text-color);
+    background-color: var(--white-color);
+    opacity: 0.8;
+    padding: 20px;
+    border-radius: 50%;
+}
+
+.slide-icon:hover{
+    color: var(--text-color);
+    background-color: var(--white-color);
+    opacity: 1;
+}
+
+/* container_job-management */
+.container_job-management {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container_high-paying-jobslist {
+    overflow-y: auto;
+    height: 400px;
+    padding: 0;
+}
+
+.container_high-paying-jobsitem {
+    display: flex;
+    background-color: var(--white-color);
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.container_high-paying-jobsitem:hover {
+    background-color: #f8f8f8;
+}
+
+.container_high-paying-jobsitem img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 8px 8px 0 8px;
+}
+
+.container_company i:hover{
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.container_company {
+    /* margin-left: 12px; */
+    align-items: center;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* display: flex; */
+}
+
+.container_company-name {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    font-weight: 700;
+    line-height: 1.4rem;
+    height: 1.4rem;
+    margin: 10px 10px 10px 0;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.container_company-wage {
+    font-size: 1.2rem;
+    margin: 4px;
+    background-color: #f8f8f8;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+/* container_vl */
+.container_tuyendung {
+    background-color: var(--white-color);
+}
+
+.container_tuyendung-title {
+    padding-top: 20px;
+}
+
+.container_tuyendung-list {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container_tuyendung-item {
+    list-style: none;
+}
+
+.container_tuyendung-img {
+    width: 150px;
+    height: 100px;
+    margin: 12px;
+    border: 1px solid #eee;
+}
+
+.container_job-hapdan {
+    display: flex;
+}

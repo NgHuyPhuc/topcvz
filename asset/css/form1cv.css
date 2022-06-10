@@ -1,0 +1,54 @@
+.container-cv {
+    background-color: #f8f8f8;
+    padding-bottom: 30px;
+}
+
+.container-form-cv {
+    display: flex;
+}
+
+.container-form-cv h3 {
+    font-size: 1.6rem;
+    color: var(--white-color);
+    background-color:rgb(252, 169, 13);
+    width: 50%;
+    padding: 8px 12px;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+.form1-trai p{
+    font-size: 1.4rem;
+}
+
+.form1_name {
+    font-size:1.6rem;;
+}
+
+.form-1_thongtin input{
+    margin: 12px 0;
+}
+
+.form1-phai{
+    margin-top: 30px;
+}
+
+.form1-phai h2{
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+}
+
+.form1-phai p{
+    font-size: 1.6rem;
+}
+
+.form1-phai li{
+    font-size: 1.2rem;
+}
+
+.form1-phai ul{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+}

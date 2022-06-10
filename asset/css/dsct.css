@@ -1,0 +1,84 @@
+.backgr-search {
+    background: transparent linear-gradient(6deg,#fff,#c4ffdd 100%,#c3ffddb3 0) 0 0 no-repeat padding-box;
+    border: 1px solid #eee;
+}
+
+.Timkiemct {
+    padding-bottom: 20px;  
+}
+
+.input-tk{
+    /* border-color: #ccc; */
+    border-color: transparent;
+    font-size: 1.6rem;
+    /* outline-color: var(--primary-color) ; */
+    outline: none;
+    padding: 8px 12px;
+    width: 36%;
+    border-radius: 10px;
+}
+
+.input-tk:hover{
+    border-color: var(--primary-color);
+    animation: fakeIn linear 0.4s;
+
+}
+
+
+.Timkiemct button{
+    margin-left: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.Timkiemct button:hover{
+    animation: fakeIn ease-out 0.4s;
+    opacity: 0.8;
+}
+
+.container_congtynb {
+    padding-bottom: 30px;
+}
+
+.container_congtynb-title{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.4rem;
+}
+
+.congty_hover:hover{
+    border: 1px solid var(--primary-color); 
+    border-radius: 10px;
+    box-shadow: 0 10px 6px -6px #777;
+    transform: scale(1.0);
+    transition: 500ms linear;
+}
+
+.congty_hover a:hover{
+    text-decoration:underline;
+}
+
+.form-congtynb {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form-congtynb .congty_hover{
+    margin: 10px 0;
+}
+
+.congty_name{
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.congty_mota{
+    font-size: 1.3rem;
+}
