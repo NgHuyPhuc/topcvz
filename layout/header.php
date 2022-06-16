@@ -1,9 +1,15 @@
 <?php
     require_once(__DIR__ . '/../lib/autoload.php');
 
-    $id=$_SESSION['IdInfoCV'];
-    $sql = "SELECT * FROM infocv WHERE IdInfoCV= $id" ;
-    $user = $db->fetchOne($sql);
+    if(empty($_SESSION['IdInfoCV']))
+    {
+        
+    }
+    else{
+        $id=$_SESSION['IdInfoCV'];
+        $sql = "SELECT * FROM infocv WHERE IdInfoCV= $id" ;
+        $user = $db->fetchOne($sql);
+    }
 ?>
 
 

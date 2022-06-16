@@ -1,5 +1,10 @@
 <?php
     require_once(__DIR__ .'/../lib/autoload.php');
+    if(empty($_SESSION['login']))
+    {
+        echo("Vui lòng đăng nhập");
+        header('location:./login.php');
+    }
 ?>
 
 <!DOCTYPE html>

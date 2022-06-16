@@ -5,26 +5,47 @@
     <?php require_once(__DIR__ . '/../layout/header.php'); ?>
     <title>Admin</title>
 
+    <style>
+        #pagination {
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .page-item {
+            border: 1px solid #ccc;
+            padding: 5px 9px;
+            color: #000;
+        }
+
+        .current-page {
+            background: #000;
+            color: #FFF;
+        }
+    </style>
 </head>
 
 <?php
-    // $sql = "SELECT * from infocv";
-    // $userinfo = $db->fetchAll($sql);
+////
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
+$current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
+$offset = ($current_page - 1) * $item_per_page;
+$sqlpt = "SELECT `jobinfo` .* ,`inforecruit`.*
+        FROM `jobinfo` ,`inforecruit`
+        WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` ORDER BY `IdJobInfo` ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
+$products = $db->fetchAll($sqlpt);
 
+// $products = mysqli_query($con, "SELECT * FROM `product` ORDER BY `id` ASC  LIMIT " . $item_per_page . " OFFSET " . $offset);
+$sql = "SELECT `jobinfo` .* ,`inforecruit`.*
+        FROM `jobinfo` ,`inforecruit`
+        WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit`";
+$totalRecords = $db->countData($sql);
+// $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
+$totalPages = ceil($totalRecords / $item_per_page);
 
-    $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
-    $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
-    $offset = ($current_page - 1) * $item_per_page;
-    $sqlpt = "SELECT * from infocv ORDER BY `IdInfoCV` ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
-    $userinfo = $db->fetchAll($sqlpt);
-
-    // $products = mysqli_query($con, "SELECT * FROM `product` ORDER BY `id` ASC  LIMIT " . $item_per_page . " OFFSET " . $offset);
-    $sql = "SELECT * from infocv";
-    $totalRecords = $db->countData($sql);
-    // $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
-    $totalPages = ceil($totalRecords / $item_per_page);
+////
 
 ?>
+
 <body>
     <!--*******************
         Preloader start
@@ -74,53 +95,54 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"><a href="./add.php">Thêm user</a></h4>
+                                <h4 class="card-title"><a href="./add.php">Thêm Công việc</a></h4>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered table-striped verticle-middle">
+                                    <table class="table table-bordered table-strip
+                                    ed verticle-middle">
                                         <thead>
                                             <tr>
-                                                <th scope="col">Id Info CV</th>
-                                                <th scope="col">Id Account</th>
-                                                <th scope="col">FirstName</th>
-                                                <th scope="col">LastName</th>
-                                                <th scope="col">Date of Birth</th>
-                                                <th scope="col">Sex</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">HomeTown</th>
-                                                <th scope="col">PermanentAddress</th>
+                                                <th scope="col">Id Job Info</th>
                                                 <th scope="col">Avatar</th>
-                                                <th scope="col">City for CV</th>
-                                                <th scope="col">Work Experien</th>
+                                                <th scope="col">NameOfCompany</th>
+                                                <th scope="col">Job</th>
+                                                <th scope="col">Ngày đăng</th>
+                                                <th scope="col">Mức Lương</th>
+                                                <th scope="col">Hình Thức Làm</th>
+                                                <th scope="col">Cấp Bậc</th>
+                                                <th scope="col">Yêu Cầu Kinh Nghiệm</th>
+                                                <th scope="col">Giới Tính</th>
+                                                <th scope="col">Số Lượng Cần Tuyển</th>
+                                                <th scope="col">Mô Tả</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($userinfo as $item) : ?>
-                                            <tr>
-                                                <td><?php echo $item['IdInfoCV'] ?></td>
-                                                <td><?php echo $item['IdAccount'] ?></td>
-                                                <td><?php echo $item['FirstName'] ?></td>
-                                                <td><?php echo $item['LastName'] ?></td>
-                                                <td><?php echo $item['DoB'] ?></td>
-                                                <td><?php echo $item['Sex'] ?></td>
-                                                <td><?php echo $item['Email'] ?></td>
-                                                <td><?php echo $item['Hometown'] ?></td>
-                                                <td><?php echo $item['PermanentAddress'] ?></td>
-                                                <td><img width="100" height="100" src="<?php echo $base_url.$item['Avatar'] ?>" alt=""></td>
-                                                <td><?php echo $item['CityforCV'] ?></td>
-                                                <td><?php echo $item['WorkExperience'] ?></td>
-                                                </td>
-                                                <td>
-                                                    <span style="text-align:justify;">
-                                                        <a style="margin-right:30px ;" href=""><i class="mdi mdi-magnify"></i></a>
-                                                        <a style="margin-right:30px ;" href="./edit.php?id=<?php echo $item['IdInfoCV'] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                                            <i class="fa fa-pencil color-muted m-r-5"></i> 
-                                                        </a>
-                                                        <a href="./delete.php?id=<?php echo $item['IdInfoCV'] ?>" onclick="if(!confirm('Delete ?')) return false; " data-toggle="tooltip" data-placement="top" title="" data-original-title="Close">
-                                                            <i class="fa fa-close color-danger"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
+                                            <?php foreach ($products as $item) : ?>
+                                                <tr>
+                                                    <td><?php echo $item['IdJobInfo'] ?></td>
+                                                    <td><img width="100" height="100" src="<?php echo $base_url . $item['Avatar'] ?>" alt=""></td>
+                                                    <td><?php echo $item['NameOfCompany'] ?></td>
+                                                    <td><?php echo $item['Job'] ?></td>
+                                                    <td><?php echo $item['Refresh'] ?></td>
+                                                    <td><?php echo $item['MucLuong'] ?></td>
+                                                    <td><?php echo $item['HinhThucLam'] ?></td>
+                                                    <td><?php echo $item['CapBac'] ?></td>
+                                                    <td><?php echo $item['YeuCauKinhNghiem'] ?></td>
+                                                    <td><?php echo $item['GioiTinh'] ?></td>
+                                                    <td><?php echo $item['SoLuongCanTuyen'] ?></td>
+                                                    <td><?php echo $item['MoTa'] ?></td>
+                                                    </td>
+                                                    <td>
+                                                        <span style="text-align:justify;">
+                                                            <a style="margin-right:30px ;" href=""><i class="mdi mdi-magnify"></i></a>
+                                                            <a style="margin-right:30px ;" href="./edit.php?id=<?php echo $item['IdJobInfo'] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                                <i class="fa fa-pencil color-muted m-r-5"></i>
+                                                            </a>
+                                                            <a href="./delete.php?id=<?php echo $item['IdJobInfo'] ?>" onclick="if(!confirm('Delete ?')) return false; " data-toggle="tooltip" data-placement="top" title="" data-original-title="Close">
+                                                                <i class="fa fa-close color-danger"></i>
+                                                            </a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>

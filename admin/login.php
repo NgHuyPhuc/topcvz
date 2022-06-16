@@ -9,16 +9,17 @@
     else{
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(empty($_POST["taikhoan"]) || empty($_POST['matkhau'])){
-                //echo "<script>alert('Không được bỏ trống')</script>";
+                echo "<script>alert('Không được bỏ trống')</script>";
             }else{
                 $taikhoan  = $_POST["taikhoan"];
                 $matkhau  = md5($_POST["matkhau"]);
     
-                $sql = "select * from nguoidung where taikhoan = '$taikhoan' and matkhau = '$matkhau' and accrole='nhanvien' ";
+                $sql = "select * from useradmin where UserName = '$taikhoan' and Password = '$matkhau' ";
     
                 $rs = $db->fetchOne($sql);
                 if($rs > 0){
                     echo "Đăng Nhập Thành Công";
+                    session_start();
                     $_SESSION['login'] = $rs['id'] ."-". $rs['taikhoan'];
                     //$_SESSION['avt_Admin'] = $rs['avatarImg'];
                     header("location:./index.php");
