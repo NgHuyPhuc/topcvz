@@ -14,11 +14,16 @@
     $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
     $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
     $offset = ($current_page - 1) * $item_per_page;
-    $sqlpt = "SELECT * from userrecruit ORDER BY `IdRecruit` ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
+    $sqlpt = "SELECT * 
+            from userrecruit
+            WHERE userrecruit.IdRecruit like '%$name%' OR userrecruit.UserName like '%$name%' OR userrecruit.Password like '%$name%' 
+            ORDER BY userrecruit.IdRecruit ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
     $user = $db->fetchAll($sqlpt);
 
     // $products = mysqli_query($con, "SELECT * FROM `product` ORDER BY `id` ASC  LIMIT " . $item_per_page . " OFFSET " . $offset);
-    $sql = "SELECT * from userrecruit";
+    $sql = "SELECT * 
+            from userrecruit
+            WHERE userrecruit.IdRecruit like '%$name%' OR userrecruit.UserName like '%$name%' OR userrecruit.Password like '%$name%' ";
     $totalRecords = $db->countData($sql);
     // $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
     $totalPages = ceil($totalRecords / $item_per_page);
@@ -69,7 +74,6 @@
             <div class="container-fluid mt-3">
                 <div class="row">
 
-
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
@@ -119,19 +123,19 @@
                                         if ($current_page > 3) {
                                             $first_page = 1;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $first_page ?>">First</a>
+                                            <a class="page-item" href="?name=<?=$name?>&per_page=<?= $item_per_page ?>&page=<?= $first_page ?>">First</a>
                                         <?php
                                         }
                                         if ($current_page > 1) {
                                             $prev_page = $current_page - 1;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $prev_page ?>">Prev</a>
+                                            <a class="page-item" href="?name=<?=$name?>&per_page=<?= $item_per_page ?>&page=<?= $prev_page ?>">Prev</a>
                                         <?php }
                                         ?>
                                         <?php for ($num = 1; $num <= $totalPages; $num++) { ?>
                                             <?php if ($num != $current_page) { ?>
                                                 <?php if ($num > $current_page - 3 && $num < $current_page + 3) { ?>
-                                                    <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $num ?>"><?= $num ?></a>
+                                                    <a class="page-item" href="?name=<?=$name?>&per_page=<?= $item_per_page ?>&page=<?= $num ?>"><?= $num ?></a>
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <strong class="current-page page-item"><?= $num ?></strong>
@@ -141,13 +145,13 @@
                                         if ($current_page < $totalPages - 1) {
                                             $next_page = $current_page + 1;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $next_page ?>">Next</a>
+                                            <a class="page-item" href="?name=<?=$name?>&per_page=<?= $item_per_page ?>&page=<?= $next_page ?>">Next</a>
                                         <?php
                                         }
                                         if ($current_page < $totalPages - 3) {
                                             $end_page = $totalPages;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $end_page ?>">Last</a>
+                                            <a class="page-item" href="?name=<?=$name?>&per_page=<?= $item_per_page ?>&page=<?= $end_page ?>">Last</a>
                                         <?php
                                         }
                                         ?>

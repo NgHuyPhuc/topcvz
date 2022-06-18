@@ -32,6 +32,8 @@
                     <li>Thông tin tài khoản tuyển dụng</li></a>  
                     <a href="<?php echo $base_url ?>admin/Job/">
                     <li>Job</li></a>
+                    <a href="<?php echo $base_url ?>admin/useradmin /">
+                    <li>Tài khoản admin</li></a>
                     <a href="<?php echo $base_url ?>admin/job2/">
                     <li>Job test</li></a>
                     

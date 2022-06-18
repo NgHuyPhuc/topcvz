@@ -12,7 +12,7 @@
 <body>
     <div class="full_web">
         <?php require_once(__DIR__ . '/layout/header.php') ?>
-        <form action="<?php echo $base_url?>" method="get">
+        <form action="<?php echo $base_url?>timkiemvieclam.php?" method="get">
             <div class="grid ">
                 <ul class="header_search">
                     <li class="header-search">

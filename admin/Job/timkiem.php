@@ -16,14 +16,28 @@ if (isset($_GET['name'])) {
     $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
     $offset = ($current_page - 1) * $item_per_page;
     $sqlpt = "SELECT `jobinfo` .* ,`inforecruit`.*
-            FROM `jobinfo` ,`inforecruit`
-            WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` ORDER BY `IdJobInfo` ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
+    FROM `jobinfo` ,`inforecruit`
+    WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` AND jobinfo.IdJobInfo like '%$name%' 
+    OR jobinfo.IdInfoRecruit like '%$name%' OR jobinfo.Refresh like '%$name%' OR jobinfo.Job like '%$name%' 
+    OR jobinfo.MucLuong like '%$name%' OR jobinfo.HinhThucLam like '%$name%' OR jobinfo.CapBac like '%$name%' 
+    OR jobinfo.CapBac like '%$name%' OR jobinfo.YeuCauKinhNghiem like '%$name%' OR jobinfo.GioiTinh like '%$name%' 
+    OR jobinfo.SoLuongCanTuyen like '%$name%' OR jobinfo.MoTa like '%$name%' OR inforecruit.IdInfoRecruit like '%$name%' 
+    OR inforecruit.IdRecruit like '%$name%' OR inforecruit.FirstName like '%$name%' OR inforecruit.LastName like '%$name%' 
+    OR inforecruit.Email like '%$name%' OR inforecruit.NameOfCompany like '%$name%' OR inforecruit.WorkPlace like '%$name%' 
+    OR inforecruit.PhoneNumber like '%$name%' OR inforecruit.PhoneNumber like '%$name%' OR inforecruit.Sex like '%$name%' ORDER BY jobinfo.IdJobInfo ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
     $products = $db->fetchAll($sqlpt);
 
     // $products = mysqli_query($con, "SELECT * FROM `product` ORDER BY `id` ASC  LIMIT " . $item_per_page . " OFFSET " . $offset);
     $sql = "SELECT `jobinfo` .* ,`inforecruit`.*
-            FROM `jobinfo` ,`inforecruit`
-            WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit`";
+    FROM `jobinfo` ,`inforecruit`
+    WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` AND jobinfo.IdJobInfo like '%$name%' 
+    OR jobinfo.IdInfoRecruit like '%$name%' OR jobinfo.Refresh like '%$name%' OR jobinfo.Job like '%$name%' 
+    OR jobinfo.MucLuong like '%$name%' OR jobinfo.HinhThucLam like '%$name%' OR jobinfo.CapBac like '%$name%' 
+    OR jobinfo.CapBac like '%$name%' OR jobinfo.YeuCauKinhNghiem like '%$name%' OR jobinfo.GioiTinh like '%$name%' 
+    OR jobinfo.SoLuongCanTuyen like '%$name%' OR jobinfo.MoTa like '%$name%' OR inforecruit.IdInfoRecruit like '%$name%' 
+    OR inforecruit.IdRecruit like '%$name%' OR inforecruit.FirstName like '%$name%' OR inforecruit.LastName like '%$name%' 
+    OR inforecruit.Email like '%$name%' OR inforecruit.NameOfCompany like '%$name%' OR inforecruit.WorkPlace like '%$name%' 
+    OR inforecruit.PhoneNumber like '%$name%' OR inforecruit.PhoneNumber like '%$name%' OR inforecruit.Sex like '%$name%'";
     $totalRecords = $db->countData($sql);
     // $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
     $totalPages = ceil($totalRecords / $item_per_page);
@@ -144,19 +158,19 @@ if (isset($_GET['name'])) {
                                         if ($current_page > 3) {
                                             $first_page = 1;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $first_page ?>">First</a>
+                                            <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $first_page ?>">First</a>
                                         <?php
                                         }
                                         if ($current_page > 1) {
                                             $prev_page = $current_page - 1;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $prev_page ?>">Prev</a>
+                                            <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $prev_page ?>">Prev</a>
                                         <?php }
                                         ?>
                                         <?php for ($num = 1; $num <= $totalPages; $num++) { ?>
                                             <?php if ($num != $current_page) { ?>
                                                 <?php if ($num > $current_page - 3 && $num < $current_page + 3) { ?>
-                                                    <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $num ?>"><?= $num ?></a>
+                                                    <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $num ?>"><?= $num ?></a>
                                                 <?php } ?>
                                             <?php } else { ?>
                                                 <strong class="current-page page-item"><?= $num ?></strong>
@@ -166,13 +180,13 @@ if (isset($_GET['name'])) {
                                         if ($current_page < $totalPages - 1) {
                                             $next_page = $current_page + 1;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $next_page ?>">Next</a>
+                                            <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $next_page ?>">Next</a>
                                         <?php
                                         }
                                         if ($current_page < $totalPages - 3) {
                                             $end_page = $totalPages;
                                         ?>
-                                            <a class="page-item" href="?per_page=<?= $item_per_page ?>&page=<?= $end_page ?>">Last</a>
+                                            <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $end_page ?>">Last</a>
                                         <?php
                                         }
                                         ?>

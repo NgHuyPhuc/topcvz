@@ -1,0 +1,87 @@
+.container-timkiem {
+    background-color: #f1f2f6;
+}
+
+.container-flex {
+    display: flex;
+    padding: 20px 0;
+}
+
+.main-title {
+    background-color: var(--primary-color);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.main-title-text {
+    font-size: 2.4rem;
+    padding:  20px 10px;
+    color: var(--white-color);
+    margin: 0;
+}
+
+.main-title-mini-text {
+    margin: 0;
+    padding: 10px 10px 20px 10px;
+    color: var(--white-color);
+    font-size: 1.4rem;
+}
+
+.container-mini-main {
+    font-size: 1.4rem;
+    color: black;
+    padding:0 0 20px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.container-vieclam{
+    width: 100%;
+}
+
+.container-vieclam-chitiet{
+    padding: 20px 12px;
+    display: flex;
+    width: 100%;
+    background-color: #f2fbf6;
+    margin: 10px 0;
+    
+}
+
+.container-vieclam-chitiet img{
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.vieclam-chucvu{
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+.vieclam-congty {
+    font-size: 1.2rem;
+    color:#71809f ;
+}
+
+.vieclam-icon i{
+    transition: 0.5s ease-in-out;
+    padding:6px ;
+     background-color:#eee; 
+     color:var(--primary-color); 
+     border-radius:5px; 
+     margin-right:10px; 
+     cursor:pointer;
+}
+
+
+.vieclam-icon i:hover{
+    color: red;
+}
+
+.img-col2 {
+    margin: 10px 0;
+}
