@@ -1,13 +1,16 @@
 <?php
     require_once(__DIR__ . '/../lib/autoload.php');
 
-    if(empty($_SESSION['IdInfoCV']))
+    if(empty($_SESSION['IdAccount']))
     {
         
     }
     else{
-        $id=$_SESSION['IdInfoCV'];
-        $sql = "SELECT * FROM infocv WHERE IdInfoCV= $id" ;
+        $id=$_SESSION['IdAccount'];
+        // $sql = "SELECT * FROM infocv WHERE IdInfoCV= $id" ;
+        $sql = "SELECT * 
+                FROM `useraccountcv`,`infocv` 
+                WHERE `useraccountcv`.`IdAccount`=`infocv`.`IdAccount` AND `useraccountcv`.`IdAccount`= $id";
         $user = $db->fetchOne($sql);
     }
 ?>
@@ -57,12 +60,12 @@
                     <?php if(empty($_SESSION['usercv'])) : ?>
                     <!-- Login -->
                     <ul>
-                        <li><a href="./login.php" class="login_link aHover">Đăng nhập</a></li>
+                        <li><a href="<?php echo $base_url?>login.php" class="login_link aHover">Đăng nhập</a></li>
                         <li>
-                            <a href="./register.php" class="login_link aHover">Đăng ký</a>
+                            <a href="<?php echo $base_url?>register.php" class="login_link aHover">Đăng ký</a>
                         </li>
                         <li>
-                            <a href="" class="finding_resumes aHover">Đăng tuyển & tìm hồ sơ</a>
+                            <a href="<?php echo $base_url?>logintuyendung.php" class="finding_resumes aHover">Đăng tuyển & tìm hồ sơ</a>
                         </li>
                     </ul>
                     <?php else :?>
@@ -75,16 +78,26 @@
                             <i class="ti-bell"></i>
                         </li>
                         <li class="user-form">
-                            <img src="<?php echo $user['Avatar'] ?>" alt="" srcset="">
+                            <img src="<?php echo $user['Avatar']?>" alt="" srcset="">
                             <div class="form-mini-user">
                                 <p class="name_user"><?php echo $user['LastName'] ?>
                                     <div class="User_mini-form-list">
-                                        <p class="user_mini-form-td">Kích hoạt tài khoản vip</p>
-                                        <p class="user_mini-form-td">Nhà tuyển dụng xem hồ sơ</p>
-                                        <p class="user_mini-form-td"><a href="./ttcanhan.php" >
-                                            Trang cá nhân
-                                        </a></p>
-                                        <p class="user_mini-form-td"><a href="./repass.php" >
+                                        <p class="user_mini-form-td">
+                                            <a href="<?php echo $base_url?>nangcapvip.php" >
+                                                Kích hoạt tài khoản vip
+                                            </a>
+                                        </p>
+                                        <p class="user_mini-form-td">
+                                            <a href="<?php echo $base_url?>ungtuyen.php" >
+                                                Công ty đã ứng tuyển
+                                            </a>
+                                        </p>
+                                        <p class="user_mini-form-td">
+                                            <a href="<?php echo $base_url?>ttcanhan.php" >
+                                                Trang cá nhân
+                                            </a>
+                                        </p>
+                                        <p class="user_mini-form-td"><a href="<?php echo $base_url?>repass.php" >
                                             Đổi mật khẩu
                                         </a></p>
                                         <p class="user_mini-form-td"> 

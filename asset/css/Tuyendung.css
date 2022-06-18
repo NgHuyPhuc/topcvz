@@ -139,3 +139,44 @@
 .container-toiuu p{
     font-size: 1.3rem;
 }
+
+/* quanlyCV */
+.container-main{
+    background-color: #f1f2f6;
+    border-top: 1px solid #ccc;
+    min-height: 80vh;
+}
+
+.container-qlcv {
+    padding-bottom: 20px;
+} 
+
+.container-content{
+    background-color: var(--white-color);
+    border-radius: 10px;
+}
+
+.thongtincv{
+    padding: 0 0 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.thongtincv img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 44px;
+}
+
+.thongtincv img:hover{
+    border: 2px solid var(--primary-color);
+}
+
+.form-thongtin li {
+    list-style: none;
+    font-size: 1.6rem;
+    padding: 10px 0;
+}
+

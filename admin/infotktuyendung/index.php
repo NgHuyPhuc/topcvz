@@ -75,11 +75,20 @@
             <div class="container-fluid mt-3">
                 <div class="row">
 
-
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"><a href="./add.php">Thêm user</a></h4>
+                                <h4 class="card-title"><a href="./add.php">Thêm Mới thông tin tuyển dụng</a></h4>
+                                <form action="<?php echo $base_url?>admin/infotktuyendung/timkiem.php?" method="get">
+                                    <div class="" style="display: flex;">
+                                        <input name="name" style="width:80% ;" type="search" class="form-control" placeholder="Search" aria-label="Search Dashboard">
+                                        <button style="width:19% ;background-color: lightgreen; border: none;" type="submit">
+                                        <i style="font-size: 20px;" class="mdi mdi-magnify"></i>Tìm kiếm</button>
+                                    </div>
+                                    
+                                </form>
+                                
+
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped verticle-middle">
                                         <thead>
@@ -183,11 +192,7 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <!-- <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div> -->
+        <?php require_once(__DIR__ . '/../layout/footer.php') ?>
         <!--**********************************
             Footer end
         ***********************************-->

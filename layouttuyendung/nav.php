@@ -1,0 +1,5 @@
+<nav class="nav flex-column" style="margin-top:30px; background-color: var(--white-color); border-radius: 10px;">
+    <a style="text-decoration:none;" href="./thongtinNTD.php"><label class="nav-link active" href="./thongtinNTD.php" for="checkbox-item1" style="align-items: center; font-size: 1.6rem; color: var(--white-color); margin: 40px 20px 18px 20px; border-radius: 10px; padding: 6px ; cursor: pointer;">Thông tin công ty</label></a>
+    <a style="text-decoration:none;" href="./repasstuyendung.php"><label class="nav-link active" href="./repasstuyendung.php" for="checkbox-item2" style="align-items: center; font-size: 1.6rem; color: var(--white-color); margin: 20px; border-radius: 10px; padding: 6px ; cursor: pointer;">Đổi mật khẩu</label></a>
+    <a style="text-decoration:none;" href="./suatttuyendung.php "><label class="nav-link active" href="./suatttuyendung.php " for="checkbox-item3" style="align-items: center; font-size: 1.6rem; color: var(--white-color); margin: 20px; border-radius: 10px; padding: 6px ; cursor: pointer;">Sửa Thông tin NTD </label></a>
+</nav>

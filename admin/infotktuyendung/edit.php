@@ -143,7 +143,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                     <div class="form-group">
                                         <label>Giới tính</label>
-                                        <label>Sex</label>
                                         <select id="inputState" name="Sex" required class="form-control">
                                             <option value="Nam">Nam</option>
                                             <option value="Nữ">Nữ</option>
@@ -173,11 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!--**********************************
             Footer start
         ***********************************-->
-        <!-- <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div> -->
+        <?php require_once(__DIR__ . '/../layout/footer.php') ?>
         <!--**********************************
             Footer end
         ***********************************-->

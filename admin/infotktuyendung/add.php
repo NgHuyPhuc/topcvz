@@ -15,12 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $file_size = $_FILES['file']['size'];
         $file_tmp = $_FILES['file']['tmp_name'];
         $file_type = $_FILES['file']['type'];
-        $file_ext = strtolower(end(explode('.', $_FILES['file']['name'])));
+        // $file_ext = strtolower(end(explode('.', $_FILES['file']['name'])));
         $expensions = array("jpeg", "jpg", "png");
 
-        if (in_array($file_ext, $expensions) === false) {
-            $errors[] = "Không chấp nhận định dạng ảnh có đuôi này, mời bạn chọn JPEG hoặc PNG.";
-        }
+        // if (in_array($file_ext, $expensions) === false) {
+        //     $errors[] = "Không chấp nhận định dạng ảnh có đuôi này, mời bạn chọn JPEG hoặc PNG.";
+        // }
 
         if (empty($errors) == true) {
             move_uploaded_file($file_tmp, '../../public/recruitimg/' . $file_name);
@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "LastName" => $_POST['LastName'] ? $_POST['LastName'] : '',
             "Sex" => $_POST['Sex'] ? $_POST['Sex'] : '',
             "Email" => $_POST['Email'] ? $_POST['Email'] : '',
-            "NameOfCompany" => $_POST['HomNameOfCompanyetown'] ? $_POST['NameOfCompany'] : '',
+            "NameOfCompany" => $_POST['NameOfCompany'] ? $_POST['NameOfCompany'] : '',
             "WorkPlace" => $_POST['WorkPlace'] ? $_POST['WorkPlace'] : '',
-            "Avatar" => $_POST['Avatar'] ? $_POST['Avatar'] : '',
+            "Avatar" => "public/recruitimg/" . $file_name,
             "WorkLocation" => $_POST['WorkLocation'] ? $_POST['WorkLocation'] : '',
             "PhoneNumber" => $_POST['PhoneNumber'] ? $_POST['PhoneNumber'] : '',
 
@@ -53,8 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else
         $_SESSION['error'] = "không thành công";
 }
+else{
     $sql = "select * from userrecruit";
     $dt = $db->fetchAll($sql);
+}
+    
 ?>
 
 <body>
@@ -153,9 +156,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="form-group">
                                         <label>Sex</label>
                                         <select id="inputState" name="Sex" required class="form-control">
-                                            <option value="<?php echo $item['Nam'] ?>">Nam</option>
-                                            <option value="<?php echo $item['Nữ'] ?>">Nữ</option>
-                                            <option value="<?php echo $item['Không'] ?>">Không</option>
+                                            <option value="Nam">Nam</option>
+                                            <option value="Nữ">Nữ</option>
+                                            <option value="Không">Không</option>
                                         </select>
                                     </div>
 
@@ -181,11 +184,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!--**********************************
             Footer start
         ***********************************-->
-        <!-- <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div> -->
+        <?php require_once(__DIR__ . '/../layout/footer.php') ?>
         <!--**********************************
             Footer end
         ***********************************-->

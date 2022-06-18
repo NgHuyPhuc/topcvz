@@ -286,3 +286,29 @@ html{
 
 }
 
+
+/* thêm logout */
+/* Thêm */
+.user-logout {
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+}
+
+.user-logout p{
+    font-size: 1.4rem;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+}
+
+.user-logout p:hover{
+    text-decoration: underline;
+}
+
+.user-logout img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+}

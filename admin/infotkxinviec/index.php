@@ -8,23 +8,24 @@
 </head>
 
 <?php
-    // $sql = "SELECT * from infocv";
-    // $userinfo = $db->fetchAll($sql);
+// $sql = "SELECT * from infocv";
+// $userinfo = $db->fetchAll($sql);
 
 
-    $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
-    $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
-    $offset = ($current_page - 1) * $item_per_page;
-    $sqlpt = "SELECT * from infocv ORDER BY `IdInfoCV` ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
-    $userinfo = $db->fetchAll($sqlpt);
+$item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
+$current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
+$offset = ($current_page - 1) * $item_per_page;
+$sqlpt = "SELECT * from infocv ORDER BY `IdInfoCV` ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
+$userinfo = $db->fetchAll($sqlpt);
 
-    // $products = mysqli_query($con, "SELECT * FROM `product` ORDER BY `id` ASC  LIMIT " . $item_per_page . " OFFSET " . $offset);
-    $sql = "SELECT * from infocv";
-    $totalRecords = $db->countData($sql);
-    // $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
-    $totalPages = ceil($totalRecords / $item_per_page);
+// $products = mysqli_query($con, "SELECT * FROM `product` ORDER BY `id` ASC  LIMIT " . $item_per_page . " OFFSET " . $offset);
+$sql = "SELECT * from infocv";
+$totalRecords = $db->countData($sql);
+// $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
+$totalPages = ceil($totalRecords / $item_per_page);
 
 ?>
+
 <body>
     <!--*******************
         Preloader start
@@ -75,6 +76,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><a href="./add.php">Thêm user</a></h4>
+                                <form action="<?php echo $base_url ?>admin/infotkxinviec/timkiem.php?" method="get">
+                                    <div class="" style="display: flex;">
+                                        <input name="name" style="width:80% ;" type="search" class="form-control" placeholder="Search" aria-label="Search Dashboard">
+                                        <button style="width:19% ;background-color: lightgreen; border: none;" type="submit">
+                                            <i style="font-size: 20px;" class="mdi mdi-magnify"></i>Tìm kiếm</button>
+                                    </div>
+                                </form>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped verticle-middle">
                                         <thead>
@@ -95,32 +103,32 @@
                                         </thead>
                                         <tbody>
                                             <?php foreach ($userinfo as $item) : ?>
-                                            <tr>
-                                                <td><?php echo $item['IdInfoCV'] ?></td>
-                                                <td><?php echo $item['IdAccount'] ?></td>
-                                                <td><?php echo $item['FirstName'] ?></td>
-                                                <td><?php echo $item['LastName'] ?></td>
-                                                <td><?php echo $item['DoB'] ?></td>
-                                                <td><?php echo $item['Sex'] ?></td>
-                                                <td><?php echo $item['Email'] ?></td>
-                                                <td><?php echo $item['Hometown'] ?></td>
-                                                <td><?php echo $item['PermanentAddress'] ?></td>
-                                                <td><img width="100" height="100" src="<?php echo $base_url.$item['Avatar'] ?>" alt=""></td>
-                                                <td><?php echo $item['CityforCV'] ?></td>
-                                                <td><?php echo $item['WorkExperience'] ?></td>
-                                                </td>
-                                                <td>
-                                                    <span style="text-align:justify;">
-                                                        <a style="margin-right:30px ;" href=""><i class="mdi mdi-magnify"></i></a>
-                                                        <a style="margin-right:30px ;" href="./edit.php?id=<?php echo $item['IdInfoCV'] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
-                                                            <i class="fa fa-pencil color-muted m-r-5"></i> 
-                                                        </a>
-                                                        <a href="./delete.php?id=<?php echo $item['IdInfoCV'] ?>" onclick="if(!confirm('Delete ?')) return false; " data-toggle="tooltip" data-placement="top" title="" data-original-title="Close">
-                                                            <i class="fa fa-close color-danger"></i>
-                                                        </a>
-                                                    </span>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?php echo $item['IdInfoCV'] ?></td>
+                                                    <td><?php echo $item['IdAccount'] ?></td>
+                                                    <td><?php echo $item['FirstName'] ?></td>
+                                                    <td><?php echo $item['LastName'] ?></td>
+                                                    <td><?php echo $item['DoB'] ?></td>
+                                                    <td><?php echo $item['Sex'] ?></td>
+                                                    <td><?php echo $item['Email'] ?></td>
+                                                    <td><?php echo $item['Hometown'] ?></td>
+                                                    <td><?php echo $item['PermanentAddress'] ?></td>
+                                                    <td><img width="100" height="100" src="<?php echo $base_url . $item['Avatar'] ?>" alt=""></td>
+                                                    <td><?php echo $item['CityforCV'] ?></td>
+                                                    <td><?php echo $item['WorkExperience'] ?></td>
+                                                    </td>
+                                                    <td>
+                                                        <span style="text-align:justify;">
+                                                            <a style="margin-right:30px ;" href=""><i class="mdi mdi-magnify"></i></a>
+                                                            <a style="margin-right:30px ;" href="./edit.php?id=<?php echo $item['IdInfoCV'] ?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit">
+                                                                <i class="fa fa-pencil color-muted m-r-5"></i>
+                                                            </a>
+                                                            <a href="./delete.php?id=<?php echo $item['IdInfoCV'] ?>" onclick="if(!confirm('Delete ?')) return false; " data-toggle="tooltip" data-placement="top" title="" data-original-title="Close">
+                                                                <i class="fa fa-close color-danger"></i>
+                                                            </a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>
@@ -180,11 +188,7 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <!-- <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div> -->
+        <?php require_once(__DIR__ . '/../layout/footer.php') ?>
         <!--**********************************
             Footer end
         ***********************************-->

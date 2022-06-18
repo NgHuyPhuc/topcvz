@@ -35,6 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $data =
         [
+            
+            "IdAccount" => $_POST['IdAccount'] ? $_POST['IdAccount'] : '',
             "FirstName" => $_POST['FirstName'] ? $_POST['FirstName'] : '',
             "LastName" => $_POST['LastName'] ? $_POST['LastName'] : '',
             "DoB" => $_POST['DoB'] ? $_POST['DoB'] : '',
@@ -107,8 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h4 class="card-title">Thêm user</h4>
                                 <div class="basic-form">
                                     <div class="form-group">
-                                        <label>Tài khoản</label>
-                                        <input type="text" required name="UserName" class="form-control" placeholder="Tài Khoản">
+                                        <label>Nhập ID</label>
+                                        <input type="text" required name="IdAccount" class="form-control" placeholder="IdAccount">
                                     </div>
 
                                     <div class="form-group">
@@ -145,10 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <label>Hometown</label>
                                         <input type="text" name="Hometown" required class="form-control" placeholder="Hometown">
                                     </div>
-                                    <div class="form-group">
-                                        <label>Avatar</label>
-                                        <input type="text" name="Avatar" required class="form-control" placeholder="Avatar">
-                                    </div>
+                                    
 
                                     <div class="form-group">
                                         <label>CityforCV</label>
@@ -161,6 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Avatar</label>
                                         <input type="file" required name="file" class="form-control-file">
                                     </div>
 
@@ -183,11 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!--**********************************
             Footer start
         ***********************************-->
-    <!-- <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div> -->
+    <?php require_once(__DIR__ . '/../layout/footer.php') ?>
     <!--**********************************
             Footer end
         ***********************************-->

@@ -4,7 +4,7 @@ if(isset($_GET['id']))
 {
     $id=$_GET['id'];
     
-    $sql= "DELETE FROM useraccountcv WHERE id = $id";
+    $sql= "DELETE FROM inforecruit WHERE IdInfoRecruit = $id";
     $delete=$db->delete($sql);
     if($delete>0)
     {

@@ -75,6 +75,7 @@
             return mysqli_affected_rows($this->link);
         }
 
+
         
         public function fetchAll($sql)
         {

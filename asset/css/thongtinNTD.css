@@ -1,0 +1,143 @@
+.infomation{
+    width: 80%;
+}
+
+.navigation-item {
+    display: flex;
+    flex-direction: column;
+    
+} 
+
+.active {
+    background-image: linear-gradient(142.17deg,#57fa93 6.66%,#4ca1b0 91.48%);
+
+}
+.navigation-item-text {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+.self, .repass, .company {
+    margin: 30px 40px 0;
+    width: 100%;
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: 10px ;
+}
+
+.self-flex {
+    display: flex;
+}
+
+.self-face {
+    display: flex;
+}
+
+.self-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    transform:scale(1);
+    transition: 0.3s ease-in-out;
+    border: 1px solid #ccc;
+}
+
+.self-img:hover {
+    transform:scale(1.05);
+}
+
+.self-name input{
+    width: 100%;
+    padding: 4px;
+    font-size: 1.4rem;
+    outline-color: #57fa93;
+}
+
+.btn-sumit{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.btn-sumit button{
+    margin: 0 14px;
+    font-size: 1.6rem;
+    padding: 6px 16px;
+    outline: none !important;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+/* repass */
+.repass input {
+    width: 50%;
+    padding: 4px;
+    font-size: 1.4rem;
+    outline-color: #57fa93;
+}
+
+.checkbox-item1,.checkbox-item2,.checkbox-item3{
+    display: none;
+}
+
+/* check thong tin ntd */
+.checkbox-item1:checked ~ .repass{
+    display: none ;
+}
+
+.checkbox-item1:checked ~ .company{
+    display: none;
+}
+
+.checkbox-item1:checked ~ .self{
+    display: block;
+}
+
+/* Check repass */
+.checkbox-item2:checked ~ .repass{
+    display: block;
+}
+
+.checkbox-item2:checked ~ .self{
+    display: none;
+}
+
+.checkbox-item2:checked ~ .company{
+    display: none;
+}
+
+/* Check company */
+.checkbox-item3:checked ~ .repass{
+    display: none;
+}
+
+.checkbox-item3:checked ~ .self{
+    display: none;
+}
+
+.checkbox-item3:checked ~ .company{
+    display: block;
+}
+
+
+/* congty */
+.company img{
+    width: 50px;
+    height: 50px;
+}

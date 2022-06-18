@@ -13,33 +13,31 @@ if (isset($_SESSION['usercv'])) {
 } else {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["UserName"]) || empty($_POST['Password'])) {
-            echo "<script>alert('Không được bỏ trống')</script>";
+            // echo "<script>alert('Không được bỏ trống')</script>";
         } else {
             $UserName  = $_POST["UserName"];
             $Password  = md5($_POST["Password"]);
 
             $sql = "SELECT * 
+                    FROM `useraccountcv`
+                    WHERE  UserName = '$UserName' AND Password = '$Password' ";
+
+            $sql2 = "SELECT * 
                     FROM `useraccountcv`,`infocv` 
                     WHERE `useraccountcv`.`IdAccount`=`infocv`.`IdAccount` AND UserName = '$UserName' AND Password = '$Password'  ";
+
+            $rs2 = $db->fetchOne($sql2);     
 
             $rs = $db->fetchOne($sql);
             if ($rs > 0) {
                 echo "Đăng Nhập Thành Công";
                 $_SESSION['usercv'] = $rs['UserName'];
-                $_SESSION['Avatar'] = $rs['Avatar'];
                 $_SESSION['UserName'] = $rs['UserName'];
-                $_SESSION['IdInfoCV']=$rs['IdInfoCV'];
-                $_SESSION['Password'] = md5($rs['Password']);
                 $_SESSION['IdAccount']=$rs['IdAccount'];
-                $_SESSION['FirstName']=$rs['FirstName'];
-                $_SESSION['LastName']=$rs['LastName'];
-                $_SESSION['DoB']=$rs['DoB'];
-                $_SESSION['Sex']=$rs['Sex'];
-                $_SESSION['Email']=$rs['Email'];
-                $_SESSION['Hometown']=$rs['Hometown'];
-                $_SESSION['PermanentAddress']=$rs['PermanentAddress'];
-                $_SESSION['CityforCV']=$rs['CityforCV'];
-                $_SESSION['WorkExperience']=$rs['WorkExperience'];
+                if($rs2>0)
+                {
+                    $_SESSION['IdInfoCV']=$rs2['IdInfoCV'];
+                }
                 header("location:./index.php");
             } else {
                 echo "Đăng Nhập Thất Bại";
@@ -61,7 +59,7 @@ if (isset($_SESSION['usercv'])) {
                     <h2>Chào mừng bạn quay trở lại</h2>
                     <p>Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lí tưởng</p>
                 </div>
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="">
                 <div class="grid_lg1-form">
                     <h3>
                         <i class="ti-email"></i>

@@ -9,130 +9,7 @@
 </head>
 <?php
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $sqlcheck="SELECT UserName FROM useraccountcv";
-//     $check = $db->fetchAll($sqlcheck);
-//     $count=0;
-//     $countdata=0;
-//     $ktusername = "UserName";
-//     foreach($check as $item)
-//     {
-//         $countdata=$countdata+1;
-//         if(strcmp($item["UserName"], $ktusername) !==0)
-//         {
-//             $count=$count+1;
-//         }
-//     }
-//     if($count == $countdata)
-//     {
-//         // echo '<script type="text/JavaScript"> 
-//         // document.getElementById("check").style.display="block";
-//         // </script>';
-//     }
-//     else{
-//         $data =
-//             [
-//                 "UserName" => $_POST['UserName'] ? $_POST['UserName'] : '',
-//                 "Password" => md5($_POST['Password']),
-//             ];
-
-//         $insert = $db->insert('useraccountcv', $data);
-//         if ($insert > 0) {
-//             echo "<script>alert('Đăng ký Thành Công')</script>";
-//             header("Refresh: 5;location:./index.php");
-//         } else {
-//             echo "Đăng ký Thất Bại";
-//         }
-//     }
-// }
-
-
-// if(isset($_POST['UserName']))
-// {
-//     $ktuser=['UserName'];
-//     $sqlkt="SELECT * FROM useraccountcv WHERE UserName='".$_POST['UserName']."'";
-//     $rs = $db->fetchAll($sqlkt);
-//     if($rs>0)
-//     {
-//         echo 
-//             '<script type="text/JavaScript"> 
-//                 document.getElementById("check").style.display="block";
-//             </script>';
-//     }
-//     else {
-//         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//         $data =
-//             [
-//                 "UserName" => $_POST['UserName'] ? $_POST['UserName'] : '',
-//                 "Password" => md5($_POST['Password']),
-//             ];
-
-//         $insert = $db->insert('useraccountcv', $data);
-//         if ($insert > 0) {
-//             echo "<script>alert('Đăng ký Thành Công')</script>";
-//             header("Refresh: 5;location:./index.php");
-//         } else {
-//             echo "Đăng ký Thất Bại";
-//         }
-//     }
-//     }
-// }
-// if(isset($_POST['UserName']))
-// {
-//     $ktuser=['UserName'];
-//     $sqlkt="SELECT * FROM useraccountcv WHERE UserName=$ktuser";'".$_POST['UserName']."'
-//     $rs = $db->fetchAll($sqlkt);
-// }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // $ktusername = ['UserName'];
-    // $sqlkt = "SELECT * FROM useraccountcv WHERE UserName='$ktusername'";
-    // $rs = $db->fetchOne($sqlkt);
-    // if ($rs == 0) {
-    //     $data =
-    //         [
-    //             "UserName" => $_POST['UserName'] ? $_POST['UserName'] : '',
-    //             "Password" => md5($_POST['Password']),
-    //         ];
-
-    //     $insert = $db->insert('useraccountcv', $data);
-    // }
-    // else{
-    //     echo '<script type="text/JavaScript"> 
-    //     document.getElementById("check").style.display="block";
-    //     </script>';
-    // }
-
-
-    // $ktuser=['UserName'];
-    // if (empty($_POST["UserName"]) || empty($_POST['Password'])) {
-    //     echo "<script>alert('Không được để trống')</script>";
-    // } else {
-    //     // $sqlkt="SELECT * FROM useraccountcv WHERE UserName=$ktuser";
-    //     // $rs = $db->fetchAll($sqlkt);
-    //     if($rs>0){
-    //         echo '
-    //         <script type="text/JavaScript"> 
-    //             document.getElementById("check").style.display="block";
-    //         </script>';
-    //     }
-    //     else{
-    //         $data =
-    //         [
-    //             "UserName" => $_POST['UserName'] ? $_POST['UserName'] : '',
-    //             "Password" => md5($_POST['Password']),
-    //         ];
-
-    //     $insert = $db->insert('useraccountcv', $data);
-    //     if ($insert > 0) {
-    //         echo "<script>alert('Đăng ký Thành Công')</script>";
-    //         header("Refresh: 5;location:./index.php");
-    //     } else {
-    //         echo "Đăng ký Thất Bại";
-    //     }
-    //     }
-    // }
-
-
     // chay dc
 
     $data =
@@ -140,11 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "UserName" => $_POST['UserName'] ? $_POST['UserName'] : '',
             "Password" => md5($_POST['Password']),
         ];
-
+    $z=$_POST['UserName'];
     $insert = $db->insert('useraccountcv', $data);
     if ($insert > 0) {
-        echo "<script>alert('Đăng ký Thành Công')</script>";
-        header("Refresh: 5;location:./index.php");
+        echo "<script>alert('Đăng ký Thành Công Hãy Nhập Thông Tin Cá Nhân')</script>";
+        // session_start();
+        $_SESSION['UserNamenhap']=$z;
+        header("location:./loginnhaptt.php");
     } else {
         echo "Đăng ký Thất Bại";
     }

@@ -16,7 +16,13 @@ if(isset($_GET['id']))
         WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` AND `jobinfo`.`IdJobInfo`='$id'";
     $job=$db->fetchOne($sqljob);
 
-    $idinfocv=$_SESSION['IdInfoCV'];
+    if(empty($_SESSION['IdInfoCV']))
+    {
+
+    }
+    else{
+        $idinfocv=$_SESSION['IdInfoCV'];
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data =

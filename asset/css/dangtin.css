@@ -1,0 +1,51 @@
+.Tuyendung-form{
+    background-color: #f1f2f6;
+}
+
+.Tuyendung-content {
+    border-top: 1px solid black;
+    display: flex;
+}
+
+.Tuyendung-content-chung1 {
+    background-color: #ffffff;
+    padding: 20px 20px;
+}
+
+.Tuyendung-content-chung1 button{
+    margin: 18px;
+    padding: 10px 14px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--white-color);
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Tuyendung-content-chung1 button:hover{
+    opacity: 0.8;
+}
+
+.Tuyendung-content-chung1-mini{
+    margin-top: 50px;
+    border: 1px solid #ccc;
+    background-color: #f0eff0;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    margin:0 20px;
+}
+
+.Tuyendung-content-chung1-mini input{
+    width: 60%;
+}
+
+.Tuyendung-content-chung1-mini h3 {
+    padding: 20px 0 0 20px;
+}
+
+.tuyendung-inp {
+    margin:20px;
+}

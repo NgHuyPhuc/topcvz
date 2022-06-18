@@ -13,30 +13,6 @@ if (isset($_GET['id'])) {
     $user = $db->fetchOne($sql);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // upload file
-    $check = false;
-    if (isset($_FILES['file'])) {
-        $errors = array();
-        $file_name = $_FILES['file']['name'];
-        $file_size = $_FILES['file']['size'];
-        $file_tmp = $_FILES['file']['tmp_name'];
-        $file_type = $_FILES['file']['type'];
-        $file_ext = strtolower(end(explode('.', $_FILES['file']['name'])));
-        $expensions = array("jpeg", "jpg", "png");
-
-        if (in_array($file_ext, $expensions) === false) {
-            $errors[] = "Không chấp nhận định dạng ảnh có đuôi này, mời bạn chọn JPEG hoặc PNG.";
-        }
-
-        if (empty($errors) == true) {
-            move_uploaded_file($file_tmp, '../../public/img/user/' . $file_name);
-            $check = true;
-        }
-    }
-
-    //
-
-
     $data =
     [
         "UserName" => $_POST['UserName'] ? $_POST['UserName'] : '',
@@ -45,9 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // "AccRole" => $_POST['AccRole'] ? $_POST['AccRole'] : '',
         
     ];
-    if($check){
-        $data["Anh"] = "public/img/user/" . $file_name;
-    }
     $update = $db->update('userrecruit', $data, array('IdRecruit' => $id));
     if ($update > 0) {
         $_SESSION['error'] = "sửa thành công";
@@ -103,14 +76,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Sửa User</h4>
+                            <h4 class="card-title">Sửa User Recruit</h4>
                             <div class="basic-form">
                                 <form method="POST" action="" enctype="multipart/form-data">
                                    
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Tên hiển thị</label>
-                                            <input type="text" name="UserName" required class="form-control" placeholder="UserName" value="<?php echo $user['UserName'] ?>">
+                                            <input type="text" name="UserName" required class="form-control" placeholder="UserName" value="<?php echo $user['UserName'] ?>" >
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Mật Khẩu</label>

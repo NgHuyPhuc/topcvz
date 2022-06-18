@@ -80,6 +80,13 @@ $totalPages = ceil($totalRecords / $item_per_page);
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><a href="./add.php">Thêm Công việc</a></h4>
+                                <form action="<?php echo $base_url ?>admin/Job/timkiem.php?" method="get">
+                                    <div class="" style="display: flex;">
+                                        <input name="name" style="width:80% ;" type="search" class="form-control" placeholder="Search" aria-label="Search Dashboard">
+                                        <button style="width:19% ;background-color: lightgreen; border: none;" type="submit">
+                                            <i style="font-size: 20px;" class="mdi mdi-magnify"></i>Tìm kiếm</button>
+                                    </div>
+                                </form>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-strip
                                     ed verticle-middle">
@@ -186,11 +193,7 @@ $totalPages = ceil($totalRecords / $item_per_page);
         <!--**********************************
             Footer start
         ***********************************-->
-        <!-- <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div> -->
+        <?php require_once(__DIR__ . '/../layout/footer.php') ?>
         <!--**********************************
             Footer end
         ***********************************-->

@@ -73,7 +73,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"><a href="./add.php">Thêm user</a></h4>
+                                <h4 class="card-title"><a href="./add.php">Thêm User Recruit</a></h4>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped verticle-middle">
                                         <thead>
@@ -81,11 +81,6 @@
                                                 <th scope="col">Id</th>
                                                 <th scope="col">Tài Khoản</th>
                                                 <th scope="col">Password</th>
-                                                <!-- <th scope="col">Avatar</th>
-                                                <th scope="col">Địa Chỉ</th>
-                                                <th scope="col">SDT</th>
-                                                <th scope="col">birthday</th>
-                                                <th scope="col">Action</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -94,8 +89,6 @@
                                                 <td><?php echo $item['IdRecruit'] ?></td>
                                                 <td><?php echo $item['UserName'] ?></td>
                                                 <td><?php echo $item['Password'] ?></td>
-                                                <!-- <td><?php echo $item['AccRole'] ?></td> -->
-                                                <!-- <td><img width="100" height="100" src="<?php echo $base_url.$item['Anh'] ?>" alt=""></td> -->
                                                 </td>
                                                 <td>
                                                     <span>
@@ -170,11 +163,8 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <!-- <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
-            </div>
-        </div> -->
+        <?php require_once(__DIR__ . '/../layout/footer.php') ?>
+        
         <!--**********************************
             Footer end
         ***********************************-->

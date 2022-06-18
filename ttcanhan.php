@@ -76,7 +76,7 @@
                                 <li>Địa chỉ thường trú: <?php echo $user['PermanentAddress']?></li>
                                 <li>Thành phố: <?php echo $user['CityforCV']?></li>
                                 <li>Email: <?php echo $user['Email']?></li>
-                                <li>Email: <?php echo $user['WorkExperience']?></li>
+                                <li>Kinh nghiệm làm việc: <?php echo $user['WorkExperience']?> năm</li>
                             </ul>
                             <div class="chinhsua">
                                 <a href="./suattcn.php" class="">Chỉnh sửa</a>

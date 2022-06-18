@@ -27,6 +27,8 @@
         #pagination {
             text-align: right;
             margin-top: 15px;
+            margin-right: 40px;
+            padding-bottom: 20px;
         }
 
         .page-item {

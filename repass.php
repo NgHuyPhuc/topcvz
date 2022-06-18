@@ -87,8 +87,8 @@
                 
 
                 <div class="grid_lg1-question">
-                    <p><a href="./login.php"> Quay lại đăng nhập</a></p>
-                    <a href="./register.php" class="">Đăng ký tài khoản mới</a>
+                    <p><a href="<?php echo $base_url?>ttcanhan.php"> Quay lại</a></p>
+                    <!-- <a href="./register.php" class="">Đăng ký tài khoản mới</a> -->
                 </div>
             </div>
             <div class="grid_lg2">
