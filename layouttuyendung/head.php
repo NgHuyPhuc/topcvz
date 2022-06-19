@@ -20,6 +20,13 @@ if(empty($_SESSION['logintuyendung']))
 <link rel="stylesheet" href="<?php echo $base_url ?>asset/css/Chung.css">
 <link rel="stylesheet" href="<?php echo $base_url ?>asset/css/Tuyendung.css">
 <link rel="stylesheet" href="<?php echo $base_url ?>asset/css/thongtinNTD.css">
+
+<link rel="stylesheet" href="<?php echo $base_url ?>asset/css/timkiemviec.css">
+<link rel="stylesheet" href="<?php echo $base_url ?>asset/css/home.css">
+<link rel="stylesheet" href="<?php echo $base_url ?>asset/css/Chung.css">
+<link rel="stylesheet" href="<?php echo $base_url ?>asset/css/dangtin.css">
+
+
 <link rel="stylesheet" href="<?php echo $base_url ?>asset/font/themify-icons-font/themify-icons/themify-icons.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

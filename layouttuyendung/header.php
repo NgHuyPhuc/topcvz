@@ -20,6 +20,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo $base_url ?>dangtin.php" style="color:var(--white-color) ;">Đăng tin tuyển dụng</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./quanlyviec.php" style="color:var(--white-color) ;">Quản lý công việc</a>
+              </li>
             </ul>
           </div>
         </div>

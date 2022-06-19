@@ -30,11 +30,14 @@
                 <div class="grid pay-form">
                     <div class="div1">
                         <h2 class="search_container-title">Tìm việc phù hợp với bạn</h2>
-                        <div class="search_container-input">
-                            <input type="text" placeholder="Tìm công việc, vị trí bạn muốn ứng tuyển" class="search_container-import">
-                            <button type="submit" class="btn_search">
-                                Tìm Việc Ngay</button>
-                        </div>
+                        <form action="<?php echo $base_url?>timkiemviec.php?" method="get">
+                            <div class="search_container-input">
+                                <input name="name" type="text" placeholder="Tìm công việc, vị trí bạn muốn ứng tuyển" class="search_container-import">
+                                <button type="submit" class="btn_search">
+                                    Tìm Việc Ngay</button>
+                            </div>
+                        </form>
+                        
 
                         <h3 class="top_cong-ty">Các công ty tuyển dụng hàng đầu trên TopCV</h3>
                         <div class="top_cong-ty-list">

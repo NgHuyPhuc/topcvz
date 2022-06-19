@@ -5,55 +5,64 @@
     <?php
     require_once(__DIR__ . '/layouttuyendung/head.php')
     ?>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./asset/css/home.css">
-    <link rel="stylesheet" href="./asset/css/Chung.css">
-    <link rel="stylesheet" href="./asset/css/dangtin.css">
-    <link rel="stylesheet" href="./asset/font/themify-icons-font/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <title>Đăng tin tuyển dụng</title>
 </head>
 
 <?php
-
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM jobinfo WHERE IdJobInfo=$id ";
+    $job = $db->fetchOne($sql);
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $idr=$_SESSION['IdRecruit'];
-    $sqlb="SELECT `inforecruit`.`IdInfoRecruit`
-        FROM `userrecruit`,`inforecruit`
-        WHERE `userrecruit`.`IdRecruit`=`inforecruit`.`IdRecruit` AND `userrecruit`.`IdRecruit`=$idr";
-    $data = $db->fetchOne($sqlb);
-    $bien = $data['IdInfoRecruit'];
+    // upload file
+    $check = false;
+    if (isset($_FILES['file'])) {
+        $errors = array();
+        $file_name = $_FILES['file']['name'];
+        $file_size = $_FILES['file']['size'];
+        $file_tmp = $_FILES['file']['tmp_name'];
+        $file_type = $_FILES['file']['type'];
+        $file_ext = strtolower(end(explode('.', $_FILES['file']['name'])));
+        $expensions = array("jpeg", "jpg", "png");
+
+        if (in_array($file_ext, $expensions) === false) {
+            $errors[] = "Không chấp nhận định dạng ảnh có đuôi này, mời bạn chọn JPEG hoặc PNG.";
+        }
+
+        if (empty($errors) == true) {
+            move_uploaded_file($file_tmp, '../../public/img/user/' . $file_name);
+            $check = true;
+        }
+    }
+
+    //
 
     $datenow = date('Y-m-d');
-
     $data =
-        [
-            // "IdInfoCV" => $_POST['IdInfoCV'] ? $_POST['IdInfoCV'] : '',
-            "IdInfoRecruit" => $bien,
-            "Job" => $_POST['Job'] ? $_POST['Job'] : '',
-            "MucLuong" => $_POST['MucLuong'] ? $_POST['MucLuong'] : '',
-            "HinhThucLam" => $_POST['HinhThucLam'] ? $_POST['HinhThucLam'] : '',
-            "CapBac" => $_POST['CapBac'] ? $_POST['CapBac'] : '',
-            "YeuCauKinhNghiem" => $_POST['YeuCauKinhNghiem'] ? $_POST['YeuCauKinhNghiem'] : '',
-            "GioiTinh" => $_POST['GioiTinh'] ? $_POST['GioiTinh'] : '',
-            "SoLuongCanTuyen" => $_POST['SoLuongCanTuyen'] ? $_POST['SoLuongCanTuyen'] : '',
-            "MoTa" => $_POST['MoTa'] ? $_POST['MoTa'] : '',
-            "Refresh" => $datenow,
-        ];
-
-    $insert = $db->insert('jobinfo', $data);
-    if ($insert > 0) {
-        $_SESSION['error'] = "Thêm thành công";
+    [
+        // "IdInfoCV" => $_POST['IdInfoCV'] ? $_POST['IdInfoCV'] : '',
+        // "IdAccount" => $_POST['IdAccount'] ? $_POST['IdAccount'] : '',
+        "Job" => $_POST['Job'] ? $_POST['Job'] : '',
+        "MucLuong" => $_POST['MucLuong'] ? $_POST['MucLuong'] : '',
+        "HinhThucLam" => $_POST['HinhThucLam'] ? $_POST['HinhThucLam'] : '',
+        "CapBac" => $_POST['CapBac'] ? $_POST['CapBac'] : '',
+        "YeuCauKinhNghiem" => $_POST['YeuCauKinhNghiem'] ? $_POST['YeuCauKinhNghiem'] : '',
+        "GioiTinh" => $_POST['GioiTinh'] ? $_POST['GioiTinh'] : '',
+        "SoLuongCanTuyen" => $_POST['SoLuongCanTuyen'] ? $_POST['SoLuongCanTuyen'] : '',
+        "MoTa" => $_POST['MoTa'] ? $_POST['MoTa'] : '',
+        "Refresh" => $_POST['Refresh'] ? $_POST['Refresh'] : '',
+    ];
+    if($check){
+        $data["Anh"] = "public/img/user/" . $file_name;
+    }
+    $update = $db->update('jobinfo', $data, array('IdJobInfo' => $id));
+    if ($update > 0) {
+        $_SESSION['error'] = "sửa thành công";
         header('Location: ./quanlyviec.php');
     } else
         $_SESSION['error'] = "không thành công";
 }
-
-
 ?>
 <body>
     <div class="full_web">
@@ -69,14 +78,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div class="Tuyendung-content-chung1-mini">
                                     <h3>Thông tin chung</h3>
                                     <div class="tuyendung-inp">
-                                        Công việc: <input type="text" name="Job" id="" >
+                                        Công việc: <input type="text" name="Job" value="<?php echo $job['Job']?>" id="" >
                                     </div>
                                     <div class="tuyendung-inp">
-                                        Mức lương: <input type="text" name="MucLuong" id="" >
+                                        Mức lương: <input type="text" name="MucLuong" value="<?php echo $job['MucLuong']?>" id="" >
                                     </div>
                                     <div class="tuyendung-inp">
                                         Hình thức làm việc: 
                                         <Select name="HinhThucLam">
+                                            <option value="<?php echo $job['HinhThucLam']?>"><?php echo $job['HinhThucLam']?></option>
                                             <option value="Toàn thời gian">Toàn thời gian</option>
                                             <option value="Bán thời gian">Bán thời gian</option>
                                         </Select>
@@ -86,29 +96,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         Giới tính: 
                                         <!-- <input type="text" name="GioiTinh" value="" class="tuyendung-inp">  -->
                                         <Select name="GioiTinh">
+                                            <option value="<?php echo $job['GioiTinh']?>"><?php echo $job['GioiTinh']?></option>
                                             <option value="Nam">Nam</option>
                                             <option value="Nữ">Nữ</option>
                                             <option value="Không">Không</option>
                                         </Select>
                                     </div>
                                     <div class="tuyendung-inp">
-                                        Cấp bậc: <input type="text" name="CapBac" id="" class="tuyendung-inp">
+                                        Cấp bậc: <input type="text" value="<?php echo $job['CapBac']?>" name="CapBac" id="" class="tuyendung-inp">
                                     </div>
                                     <div class="tuyendung-inp">
-                                        Kinh nghiệm: <input type="text" name="YeuCauKinhNghiem" id="" class="tuyendung-inp">
+                                        Kinh nghiệm: <input type="text" value="<?php echo $job['YeuCauKinhNghiem']?>" name="YeuCauKinhNghiem" id="" class="tuyendung-inp">
                                     </div>
                                     <div class="tuyendung-inp">
-                                        Số lượng cần tuyển: <input type="text" name="SoLuongCanTuyen" id="" class="tuyendung-inp">
+                                        Số lượng cần tuyển: <input value="<?php echo $job['SoLuongCanTuyen']?>" type="text" name="SoLuongCanTuyen" id="" class="tuyendung-inp">
                                     </div>
                                 </div>
 
 
                                 <div style="margin:20px 0 0 18px;">
                                     <h3 style="text-transform:uppercase; font-size: 1.4rem;">Mô tả công việc</h3>
-                                    <input type="text" name="MoTa" class="tuyendung-inp">
+                                    <!-- <textarea rows="12" cols="62" name="MoTa" form="usrform" style="font-size:1.4rem ;" placeholder="Mô tả chi tiết..."> </textarea> -->
+                                    <input value="<?php echo $job['MoTa']?>" type="text" name="MoTa" class="tuyendung-inp">
                                 </div>
 
-                                <button type="submit" >Tuyển dụng ngay</button>
+                                <button type="submit" >Chỉnh sửa</button>
                             </div>
                         </div>
 

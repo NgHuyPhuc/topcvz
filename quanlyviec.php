@@ -1,103 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Tìm kiếm việc làm</title>
-    <?php require_once(__DIR__ .'/layout/head.php')?>
+
+    <?php
+    require_once(__DIR__ . '/layouttuyendung/head.php')
+    ?>
+    <title>Quản lý việc làm</title>
 </head>
 <?php
-    if(isset($_GET['name']))
-    {
-        $name = $_GET['name'];
-        $item_per_page = !empty($_GET['per_page']) ? $_GET['per_page'] : 4;
-        $current_page = !empty($_GET['page']) ? $_GET['page'] : 1; //Trang hiện tại
-        $offset = ($current_page - 1) * $item_per_page;
-        $sqlpt = "SELECT `jobinfo` .* ,`inforecruit`.*
-        FROM `jobinfo` ,`inforecruit`
-        WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` AND 
-        jobinfo.Job like '%$name%' ORDER BY jobinfo.IdJobInfo ASC LIMIT " . $item_per_page . " OFFSET " . $offset;
-        $data = $db->fetchAll($sqlpt);
+    $sql="SELECT `jobinfo` .* ,`inforecruit`.*
+    FROM `userrecruit`,`inforecruit`,`jobinfo` 
+    WHERE `userrecruit`.`IdRecruit`=`inforecruit`.`IdRecruit`AND `inforecruit`.`IdInfoRecruit`=`jobinfo`.`IdInfoRecruit` 
+    AND `userrecruit`.`IdRecruit`=$id;";
 
-        // $products = mysqli_query($con, "SELECT * FROM `product` ORDER BY `id` ASC  LIMIT " . $item_per_page . " OFFSET " . $offset);
-        $sql = "SELECT `jobinfo` .* ,`inforecruit`.*
-        FROM `jobinfo` ,`inforecruit`
-        WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` AND 
-        jobinfo.Job like '%$name%' ";
-        $totalRecords = $db->countData($sql);
-        // $totalRecords = mysqli_query($con, "SELECT * FROM `product`");
-        $totalPages = ceil($totalRecords / $item_per_page);
-    }
+    $data = $db->fetchAll($sql);
+
+    $count = $db->countData($sql);
 ?>
+
+
 <body>
     <div class="full_web">
-        <?php require_once(__DIR__ . '/layout/header.php') ?>
-        <form action="<?php echo $base_url?>timkiemvieclam.php?" method="get">
-            <div class="grid ">
-                <ul class="header_search">
-                    <li class="header-search">
-                        <input style="border: 1px solid black;" type="text" name="name" id="" placeholder="Tên công việc, vị trí bạn muốn ứng tuyển">
-                    </li>
-                    <li class="header-search header-search-item">
-                        <p>Tất cả nghành nghề
-                            <i class="ti-angle-down "></i>
-                        </p>
-                        <ul class="header-search-minilist">
-                            <li class="header-search-miniitem">Tất cả nghành nghề</li>
-                            <li class="header-search-miniitem">Kinh doanh/bán hàng</li>
-                            <li class="header-search-miniitem">Biên/phiên dịch</li>
-                            <li class="header-search-miniitem">Báo chí/Truyền hình</li>
-                            <li class="header-search-miniitem">Bưu chính viễn thông</li>
-                            <li class="header-search-miniitem">Bảo hiểm</li>
-                            <li class="header-search-miniitem">Bất động sản</li>
-                            <li class="header-search-miniitem">Công nghệ cao</li>
-                            <li class="header-search-miniitem">Du lịch</li>
-                            <li class="header-search-miniitem">Cơ khí/Chế tạo</li>
-                        </ul>
-                    </li>
-                    <li class="header-search header-search-item ">
-                        <p>Tất cả lĩnh vực công ty
-                            <i class="ti-angle-down"></i>
-                        </p>
-                        <ul class="header-search-minilist">
-                            <li class="header-search-miniitem">Tất cả lĩnh vực công ty</li>
-                            <li class="header-search-miniitem">It- phần mềm</li>
-                            <li class="header-search-miniitem">Kế toán- Kiếm toán</li>
-                            <li class="header-search-miniitem">Luật</li>
-                            <li class="header-search-miniitem">Bảo hiểm</li>
-                            <li class="header-search-miniitem">Bất động sản</li>
-                            <li class="header-search-miniitem">Dược phẩm/Y tế</li>
-                            <li class="header-search-miniitem">Internet/Online</li>
-                            <li class="header-search-miniitem">Du lịch</li>
-                            <li class="header-search-miniitem">Nhà hàng/Khách sạn</li>
-                        </ul>
-                    </li>
-                    <li class="header-search header-search-item ">
-                        <p>Tất cả địa điểm
-                            <i class="ti-angle-down"></i>
-                        </p>
-                        <ul class="header-search-minilist">
-                            <li class="header-search-miniitem">Tất cả địa điểm</li>
-                            <li class="header-search-miniitem">Hà Nội</li>
-                            <li class="header-search-miniitem">TP Hồ Chí Minh</li>
-                            <li class="header-search-miniitem">Bình Dương</li>
-                            <li class="header-search-miniitem">Ninh Bình</li>
-                            <li class="header-search-miniitem">Nam Định</li>
-                            <li class="header-search-miniitem">Hải Phòng</li>
-                            <li class="header-search-miniitem">Quảng Ninh</li>
-                            <li class="header-search-miniitem">Đông Nai</li>
-                            <li class="header-search-miniitem">Thái Bình</li>
-                        </ul>
-                    </li>
-                    <button type="submit"><i class="ti-search"></i> Tìm kiếm</button>
-                </ul>
+        <?php
+        require_once(__DIR__ . '/layouttuyendung/header.php')
+        ?>
 
-            </div>
-        </form>
         <div class="container-timkiem">
             <div class="grid">
                 <div class="container-flex">
                     <div class="grid__column-8">
                         <div style="background-color: var(--white-color);">
-                            <div style="min-height:0vh ;" class="container-main">
+                            <div style="min-height:0;" class="container-main">
                                 <div class="main-title">
                                     <h3 class="main-title-text"> Việc làm phù hợp</h3>
                                     <p class="main-title-mini-text">Khám phá cơ hội việc làm được gợi ý dựa trên mong muốn, 
@@ -105,71 +38,33 @@
                                 </div>
                             </div>
     
-                            <h4 class="container-mini-main">Tìm thấy <span style="color:var(--primary-color) ;"> <?php echo $totalRecords?></span> việc làm phù hợp với yêu cầu của bạn</h4>
+                            <h4 class="container-mini-main">Tìm thấy <span style="color:var(--primary-color) ;"> <?php echo $count?></span> việc làm phù hợp với yêu cầu của bạn</h4>
 
                             <div class="container-vieclam">
+
                                 <?php foreach($data as $item):?>
                                     <div class="container-vieclam-chitiet">
-                                        <a style="text-decoration: none;" href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>">
-                                            <img src="<?php echo $base_url,$item['Avatar']?>" alt="">
+                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>">
+                                            <img src="<?php echo $item['Avatar']?>" alt="">
                                         </a>
                                         <div style="display: flex; justify-content: space-between; width: 100%;">
-                                            <a style="text-decoration: none;" href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>">
-                                                <div style="padding-left: 15px;">
-                                                    <p class="vieclam-chucvu"><?php echo $item['Job']?></p>
-                                                    <p class="vieclam-congty"><?php echo $item['CapBac']?></p>
-                                                    <p class="vieclam-congty"><?php echo $item['NameOfCompany']?></p>
-                                                </div>
-                                            </a>
-                                            
+                                            <div style="padding-left: 15px;">
+                                                <p style="font-size: 18px;" class="vieclam-chucvu"><?php echo $item['Job']?></p>
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="vieclam-congty"><?php echo $item['CapBac']?></a>
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="vieclam-congty"><?php echo $item['NameOfCompany']?></a>
+                                            </div>
                                             <div style="font-size:1.2rem ;">
-                                                <p>Còn <span><?php echo $item['SoLuongCanTuyen']?></span> để ứng tuyển</p>
+                                                <p>Còn <span>28</span> để ứng tuyển</p>
                                                 <div class="vieclam-icon">
-                                                    <i class="ti-heart " ></i>
-                                                    <i class="ti-trash " ></i>
+                                                    <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="ti-search"></a>
+                                                    <a href="./dangtinchinhsua.php?id=<?php echo $item['IdJobInfo']?>"><i class="ti-pencil"></i></a>
+                                                    <a href="./modules/xoajob.php?id=<?php echo $item['IdJobInfo']?>"><i class="ti-trash"></i></a>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 <?php endforeach?>
-                            </div>
-                            <div id="pagination">
-                                <?php
-                                if ($current_page > 3) {
-                                    $first_page = 1;
-                                ?>
-                                    <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $first_page ?>">First</a>
-                                <?php
-                                }
-                                if ($current_page > 1) {
-                                    $prev_page = $current_page - 1;
-                                ?>
-                                    <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $prev_page ?>">Prev</a>
-                                <?php }
-                                ?>
-                                <?php for ($num = 1; $num <= $totalPages; $num++) { ?>
-                                    <?php if ($num != $current_page) { ?>
-                                        <?php if ($num > $current_page - 3 && $num < $current_page + 3) { ?>
-                                            <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $num ?>"><?= $num ?></a>
-                                        <?php } ?>
-                                    <?php } else { ?>
-                                        <strong class="current-page page-item"><?= $num ?></strong>
-                                    <?php } ?>
-                                <?php } ?>
-                                <?php
-                                if ($current_page < $totalPages - 1) {
-                                    $next_page = $current_page + 1;
-                                ?>
-                                    <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $next_page ?>">Next</a>
-                                <?php
-                                }
-                                if ($current_page < $totalPages - 3) {
-                                    $end_page = $totalPages;
-                                ?>
-                                    <a class="page-item" href="?name=<?= $name?>&per_page=<?= $item_per_page ?>&page=<?= $end_page ?>">Last</a>
-                                <?php
-                                }
-                                ?>
                             </div>
                         </div>
                     </div>
@@ -242,6 +137,7 @@
         </div>
     </div>
 
+    <!-- Backtop -->
     <div id="backtop">
         <i class="ti-angle-up backtop-icon"></i>
     </div>
@@ -263,5 +159,10 @@
         });
     </script>
     <script src="./asset/js/app.js"></script>
+
+    <!-- bt navbar -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

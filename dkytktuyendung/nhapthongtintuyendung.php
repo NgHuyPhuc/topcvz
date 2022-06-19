@@ -1,30 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-  <?php
-    require_once(__DIR__ . '/../lib/autoload.php');
-  ?>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="<?php echo $base_url ?>/asset/login-form-04/login-form-04/fonts/icomoon/style.css">
-
-
-    <link rel="stylesheet" href="<?php echo $base_url ?>/asset/login-form-04/login-form-04/css/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?php echo $base_url ?>/asset/login-form-04/login-form-04/css/bootstrap.min.css">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="<?php echo $base_url ?>/asset/login-form-04/login-form-04/css/style.css">
-    <link rel="stylesheet" href="/public/recruitimg/">
-    <title>Nhập thông tin</title>
-  </head>
-
-  <!-- zz -->
+<head>
+    <?php
+        require_once(__DIR__ . '/../lib/autoload.php');
+    ?>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Thông Tin Tuyển dụng</title>
+    <link rel="stylesheet" href="../asset/font/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../asset/css/Chung.css">
+    <link rel="stylesheet" href="../asset/css/lgtuyendung.css">
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+            $('#blah')
+            .attr('src', e.target.result)
+            .width(200)
+            .height(200);
+        };
+        reader.readAsDataURL(input.files[0]);
+  }
+}
+    </script>
+</head>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // upload file
@@ -86,98 +90,73 @@ else{
     
 ?>
 
-
-
-  <body>
-  
-
-  <div class="d-md-flex half">
-    <div class="bg" style="background-image: url('<?php echo $base_url ?>/asset/login-form-04/login-form-04/images/bg_1.jpg');"></div>
-    <div class="contents">
-
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-12">
-            <div style="max-width:none" class="form-block mx-auto">
-              <div class="text-center mb-5">
-              <h3>Đăng ký </br><strong>Trang tuyển dụng</strong></h3>
-              <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
-              </div>
-              <form action="#" method="post" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group first">
-                            <label for="username">Nhập FirstName</label>
-                            <input type="text" name="FirstName" class="form-control" placeholder="Your FirstName" id="username">
+<body>
+    <div class="half">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="content">
+                <h3> <strong>Nhập Thông Tin Tuyển Dụng</strong></h3>
+                <div class="content-main">
+                    <div class="grid__column-5">
+                        <div class="main-content-input">
+                            <h4>Nhập FirstName</h4>
+                            <input name="FirstName" type="text" name="" placeholder="Nhập FirstName" id="">
                         </div>
-                        <div class="form-group first">
-                            <label for="username">Nhập LastName</label>
-                            <input type="text" name="LastName" class="form-control" placeholder="Your LastName" id="username">
+
+                        <div class="main-content-input">
+                            <h4>Nhập LastName</h4>
+                            <input name="LastName" type="text" name="" placeholder="Nhập LastName" id="">
                         </div>
-                        <div class="form-group first">
-                            <label>Giới tính</label>
+
+                        <div class="main-content-input">
+                            <h4>Nhập Giới Tính</h4>
                             <select id="inputState" name="Sex" required class="form-control">
                                 <option value="Nam">Nam</option>
                                 <option value="Nữ">Nữ</option>
                                 <option value="Không">Không</option>
                             </select>
                         </div>
-                        <div class="form-group first">
-                            <label for="username">Nhập Email</label>
-                            <input type="email" name="Email" class="form-control" placeholder="Your Email" id="username">
+
+                        <div class="main-content-input">
+                            <h4>Nhập Email</h4>
+                            <input type="email" name="Email" name="" placeholder="Nhập Email" id="">
                         </div>
-                    
-                        <div class="form-group first">
-                                <label for="username">Nhập NameOfCompany</label>
-                                <input type="text" name="NameOfCompany" class="form-control" placeholder="Your NameOfCompany" id="username">
-                            </div>
+
+                        <div class="main-content-input">
+                            <h4>Nhập NameofCompany</h4>
+                            <input type="text" name="NameOfCompany" placeholder="Nhập NameofCompany" id="">
+                        </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group first">
-                            <label for="username">Nhập WorkPlace</label>
-                            <input type="text" name="WorkPlace" class="form-control" placeholder="Your WorkPlace" id="username">
+                    <div class="grid__column-5">
+                        <div class="main-content-input">
+                            <h4>Nhập WorkPlace</h4>
+                            <input type="text" name="WorkPlace" placeholder="Nhập WorkPlace" id="">
                         </div>
-                        <div class="form-group last mb-3">
-                            <label for="username">Nhập WorkLocation</label>
-                            <input type="text" name="WorkLocation" class="form-control" placeholder="Your WorkLocation" id="password">
+
+                        <div class="main-content-input">
+                            <h4>Nhập WorkLocation</h4>
+                            <input type="text" name="WorkLocation" placeholder="Nhập WorkLocation" id="">
                         </div>
-                        <div class="form-group last mb-3">
-                            <label for="username">Nhập PhoneNumber</label>
-                            <input type="text" name="PhoneNumber" class="form-control" placeholder="Your PhoneNumber" id="password">
+
+                        <div class="main-content-input">
+                            <h4>Nhập PhoneNumber</h4>
+                            <input type="text" name="PhoneNumber" placeholder="Nhập PhoneNumber" id="">
                         </div>
+
+                        <!-- <div style="margin-top: 20px;">
+                            <img src="" width="100" height="100" alt="">
+                            <input type="file" name="file" class="form-control-file">
+                        </div> -->
                         <div class="form-group last mb-3">
                             <img src="" width="100" height="100" alt="">
                             <input type="file" name="file" class="form-control-file">
                         </div>
                     </div>
                 </div>
-                
-                
-                
-                <div class="d-sm-flex mb-5 align-items-center">
-                  <!-- <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span> -->
-                    <!-- <input type="checkbox" checked="checked"/> -->
-                    <!-- <div class="control__indicator"></div> -->
-                  <!-- </label> -->
-                  <!-- <span class="ml-auto"><a href="#" class="forgot-pass">Đăng ký tài khoản mới</a></span>  -->
-                  <!-- <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>  -->
-                </div>
 
-                <input type="submit" value="Xác nhận" class="btn btn-block btn-primary">
-
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+                <button type="submit">Xác nhận</button>
+            </div>  
+        </form>
+              
     </div>
-
-    
-  </div>
-    
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+</body>
 </html>

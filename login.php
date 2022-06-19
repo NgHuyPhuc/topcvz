@@ -9,7 +9,7 @@
 
 <?php
 if (isset($_SESSION['usercv'])) {
-    // header("location:./index.php");
+    header("location:./index.php");
 } else {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["UserName"]) || empty($_POST['Password'])) {
@@ -29,6 +29,7 @@ if (isset($_SESSION['usercv'])) {
             $rs2 = $db->fetchOne($sql2);     
 
             $rs = $db->fetchOne($sql);
+            
             if ($rs > 0) {
                 echo "Đăng Nhập Thành Công";
                 $_SESSION['usercv'] = $rs['UserName'];

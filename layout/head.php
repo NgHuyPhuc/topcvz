@@ -24,7 +24,27 @@ require_once(__DIR__ . '/../lib/autoload.php');
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
+<style>
+        #pagination {
+            text-align: right;
+            margin-top: 15px;
+            margin-right: 40px;
+            padding-bottom: 20px;
+        }
+
+        .page-item {
+            border: 1px solid #ccc;
+            padding: 5px 9px;
+            color: #000;
+        }
+
+        .current-page {
+            background: #000;
+            color: #FFF;
+        }
+</style>
+
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {

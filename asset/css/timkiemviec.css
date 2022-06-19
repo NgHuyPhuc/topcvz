@@ -77,11 +77,25 @@
      cursor:pointer;
 }
 
-
 .vieclam-icon i:hover{
     color: red;
 }
 
 .img-col2 {
     margin: 10px 0;
+}
+
+.vieclam-icon a{
+    transition: 0.5s ease-in-out;
+    padding:6px ;
+     background-color:#eee; 
+     color:var(--primary-color); 
+     border-radius:5px; 
+     margin-right:10px; 
+     cursor:pointer;
+     text-decoration: none;
+}
+
+.vieclam-icon a:hover{
+    color: red;
 }

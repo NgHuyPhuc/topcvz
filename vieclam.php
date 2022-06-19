@@ -5,14 +5,29 @@
 
     <title>Việc làm</title>
     <?php
-    require_once(__DIR__ . '/layout/head.php')
+        require_once(__DIR__ . '/layout/head.php')
     ?>
+    
 </head>
+<?php
+    $datelimit = date('Y-m-d', strtotime('-30 days'));
+    $sqljob = "SELECT `jobinfo` .* ,`inforecruit`.*
+        FROM `jobinfo` ,`inforecruit`
+        WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` AND `jobinfo`.`Refresh`>'$datelimit'
+        ORDER BY `jobinfo`.`Refresh` DESC ";
+    $job = $db->fetchAll($sqljob);
 
+    $sqljob2 = "SELECT `jobinfo` .* ,`inforecruit`.*
+        FROM `jobinfo` ,`inforecruit`
+        WHERE `jobinfo`.`IdInfoRecruit`=`inforecruit`.`IdInfoRecruit` AND `jobinfo`.`Refresh`>'$datelimit'
+        ORDER BY `jobinfo`.`IdInfoRecruit` DESC ";
+    $job2 = $db->fetchAll($sqljob);
+
+?>
 <body>
     <div class="full_web">
         <?php require_once(__DIR__ . '/layout/header.php') ?>
-        <form action="<?php echo $base_url?>timkiemvieclam.php?" method="get">
+        <form action="<?php echo $base_url?>timkiemviec.php?" method="get">
             <div class="grid ">
                 <ul class="header_search">
                     <li class="header-search">
@@ -124,133 +139,23 @@
                                 </div>
                                 <div class="container_high-paying-jobs">
                                     <ul class="container_high-paying-jobslist">
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty1.png" alt="">
-                                            <div class="container_company">
-                                                <div style="display: flex; margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Nhân Viên Marketing (Lương 10-15 Triệu)</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">10-15 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
+                                        <?php foreach($job as $item):?>
+                                            <li class="container_high-paying-jobsitem">
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                                <div class="container_company">
+                                                    <div style="display: flex; margin-top: 8px;">
+                                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
                                                     </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty2.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                                </div>
-                                                <div style="display: flex;">
                                                     <div style="display: flex;">
-                                                        <p class="container_company-wage">14-20 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
+                                                        <div style="display: flex;">
+                                                            <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                            <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                        </div>
+                                                        <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                                     </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                                 </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty2.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">14-20 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty2.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">14-20 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty2.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">14-20 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty5.jpg" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Công Ty Cổ Phần 216</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">12-18 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty4.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">CÔNG TY TNHH BEST LOGISTICS TECHNOLOGY (VIỆT NAM)</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">40-45 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty3.jpg" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">Trên 10 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        <?php endforeach?>
                                     </ul>
                                 </div>
                             </div>
@@ -261,133 +166,23 @@
                                 </div>
                                 <div class="container_high-paying-jobs">
                                     <ul class="container_high-paying-jobslist">
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty1.png" alt="">
-                                            <div class="container_company">
-                                                <div style="display: flex; margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">CÔNG TY TNHH IOTLINK</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">Trên 20 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
+                                        <?php foreach($job as $item):?>
+                                            <li class="container_high-paying-jobsitem">
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                                <div class="container_company">
+                                                    <div style="display: flex; margin-top: 8px;">
+                                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
                                                     </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty13.jpg" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN ES GAME</a>
-                                                </div>
-                                                <div style="display: flex;">
                                                     <div style="display: flex;">
-                                                        <p class="container_company-wage">Thỏa thuận</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
+                                                        <div style="display: flex;">
+                                                            <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                            <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                        </div>
+                                                        <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                                     </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                                 </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty14.jpg" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Azoom VietNam Inc</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">Trên 35 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty15.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">BÁO ĐIỆN TỬ VNEXPRESS.NET (CÔNG TY CỔ PHẦN DỊCH VỤ TRỰC TUYẾN FPT)</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">Thỏa thuận</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty2.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">14-20 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty5.jpg" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">Công Ty Cổ Phần 216</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">12-18 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty4.png" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">CÔNG TY TNHH BEST LOGISTICS TECHNOLOGY (VIỆT NAM)</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">40-45 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="container_high-paying-jobsitem">
-                                            <img src="./asset/img/logocty3.jpg" alt="">
-                                            <div class="container_company">
-                                                <div style=" margin-top: 8px;">
-                                                    <a href="./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</a>
-                                                </div>
-                                                <div style="display: flex;">
-                                                    <div style="display: flex;">
-                                                        <p class="container_company-wage">Trên 10 triệu</p>
-                                                        <p class="container_company-wage">Hà Nội</p>
-                                                    </div>
-                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        <?php endforeach?>
                                     </ul>
                                 </div>
                             </div>
@@ -409,133 +204,23 @@
                         </div>
                         <div class="container_high-paying-jobs">
                             <ul class="container_high-paying-jobslist">
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty1.png" alt="">
-                                    <div class="container_company">
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">Nhân Viên Marketing (Lương 10-15 Triệu)</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">10-15 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                <?php foreach($job as $item):?>
+                                        <li class="container_high-paying-jobsitem">
+                                            <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                            <div class="container_company">
+                                                <div style="display: flex; margin-top: 8px;">
+                                                    <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
+                                                </div>
+                                                <div style="display: flex;">
+                                                    <div style="display: flex;">
+                                                        <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                        <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                    </div>
+                                                    <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
+                                                </div>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty2.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty2.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty2.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty2.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty5.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">Công Ty Cổ Phần 216</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">12-18 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty4.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">CÔNG TY TNHH BEST LOGISTICS TECHNOLOGY (VIỆT NAM)</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">40-45 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty3.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.htma href=" ./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
+                                        </li>
+                                    <?php endforeach?>
                             </ul>
                         </div>
                     </div>
@@ -547,133 +232,23 @@
                         </div>
                         <div class="container_high-paying-jobs">
                             <ul class="container_high-paying-jobslist">
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty6.png" alt="">
-                                    <div class="container_company">
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">Công ty TNHH Paldo Vina</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">10-15 triệu</p>
-                                                <p class="container_company-wage">Hà Nam</p>
+                                <?php foreach($job as $item):?>
+                                    <li class="container_high-paying-jobsitem">
+                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                        <div class="container_company">
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty7.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">Công Ty Cổ Phần Đầu Tư Quốc Tế UBG</a>
-                                        </div>
-                                        <div style="display: flex;">
                                             <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">TP.HCM</p>
+                                                <div style="display: flex;">
+                                                    <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                    <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                </div>
+                                                <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty8.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN CARBON VIỆT NAM</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty9.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN AN VIỆT SÔNG HỒNG</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty2.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty10.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">Công ty Cổ phần POSO Việt Nam</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">20-40 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty11.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">Công ty Cổ Phần Cung ứng Y tế Nha Phong</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">TP.HCM</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty3.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                <?php endforeach?>
                             </ul>
                         </div>
                     </div>
@@ -685,133 +260,23 @@
                         </div>
                         <div class="container_high-paying-jobs">
                             <ul class="container_high-paying-jobslist">
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty1.png" alt="">
-                                    <div class="container_company">
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">CÔNG TY TNHH IOTLINK</a>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                <?php foreach($job as $item):?>
+                                    <li class="container_high-paying-jobsitem">
+                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                        <div class="container_company">
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty13.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <a href="./chitiet.html" class="container_company-name">CÔNG TY CỔ PHẦN ES GAME</a>
-                                        </div>
-                                        <div style="display: flex;">
                                             <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                                <div style="display: flex;">
+                                                    <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                    <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                </div>
+                                                <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty14.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Azoom VietNam Inc</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 35 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty15.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">BÁO ĐIỆN TỬ VNEXPRESS.NET (CÔNG TY CỔ PHẦN DỊCH VỤ TRỰC TUYẾN FPT)</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty2.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty5.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công Ty Cổ Phần 216</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">12-18 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty4.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY TNHH BEST LOGISTICS TECHNOLOGY (VIỆT NAM)</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">40-45 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty3.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                <?php endforeach?>
                             </ul>
                         </div>
                     </div>
@@ -823,133 +288,23 @@
                         </div>
                         <div class="container_high-paying-jobs">
                             <ul class="container_high-paying-jobslist">
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty16.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <h3 class="container_company-name">Công ty TNHH Thương Mại Đèn Pha Lê</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 7 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                <?php foreach($job as $item):?>
+                                    <li class="container_high-paying-jobsitem">
+                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                        <div class="container_company">
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty17.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN LITTLE EINSTEINS</h3>
-                                        </div>
-                                        <div style="display: flex;">
                                             <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                                <div style="display: flex;">
+                                                    <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                    <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                </div>
+                                                <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty18.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY TNHH HOMES</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">2.5-7 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty19.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Tập Đoàn Chubb - Hoa Kỳ</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty2.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công ty cổ phần công nghệ và phần mềm Genify</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">14-20 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty5.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công Ty Cổ Phần 216</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">12-18 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty4.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY TNHH BEST LOGISTICS TECHNOLOGY (VIỆT NAM)</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">40-45 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty3.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                <?php endforeach?>
                             </ul>
                         </div>
                     </div>
@@ -961,133 +316,23 @@
                         </div>
                         <div class="container_high-paying-jobs">
                             <ul class="container_high-paying-jobslist">
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty20.png" alt="">
-                                    <div class="container_company">
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY TNHH VAREAL VIỆT NAM</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 4 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                <?php foreach($job as $item):?>
+                                    <li class="container_high-paying-jobsitem">
+                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                        <div class="container_company">
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty21.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công ty BHNT Daiichi Việt Nam</h3>
-                                        </div>
-                                        <div style="display: flex;">
                                             <div style="display: flex;">
-                                                <p class="container_company-wage">5-10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                                <div style="display: flex;">
+                                                    <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                    <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                </div>
+                                                <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty22.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">EotyGroup</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">TP.HCM</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty23.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công ty cổ phần bất động sản Maicom Việt Nam</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty24.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Siêu Thị Điện Máy Anh Đức</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">2-5 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty5.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công Ty Cổ Phần 216</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">12-18 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty4.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY TNHH BEST LOGISTICS TECHNOLOGY (VIỆT NAM)</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">40-45 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty3.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                <?php endforeach?>
                             </ul>
                         </div>
                     </div>
@@ -1099,133 +344,23 @@
                         </div>
                         <div class="container_high-paying-jobs">
                             <ul class="container_high-paying-jobslist">
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty25.png" alt="">
-                                    <div class="container_company">
-                                        <div style="display: flex; margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY TNHH THỰC PHẨM MINH KHÁNH LONG</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Thỏa thuận</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                <?php foreach($job as $item):?>
+                                    <li class="container_high-paying-jobsitem">
+                                        <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>"><img src="<?php echo $item['Avatar']?>" alt=""></a>
+                                        <div class="container_company">
+                                            <div style="display: flex; margin-top: 8px;">
+                                                <a href="./chitiet.php?id=<?php echo $item['IdJobInfo']?>" class="container_company-name"><?php echo $item['Job']?></a>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty26.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN HTC VIỄN THÔNG QUỐC TẾ</h3>
-                                        </div>
-                                        <div style="display: flex;">
                                             <div style="display: flex;">
-                                                <p class="container_company-wage">8-10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
+                                                <div style="display: flex;">
+                                                    <p class="container_company-wage"><?php echo $item['MucLuong']?></p>
+                                                    <p class="container_company-wage"><?php echo $item['WorkLocation']?></p>
+                                                </div>
+                                                <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                             </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
                                         </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty27.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">VTC Academy Hà Nội</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">11-14 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty28.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN HTC VIỄN THÔNG QUỐC TẾ</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">8-10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty29.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">Công ty TNHH Xuất Nhập Khẩu COMALINA Việt Nam</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 7 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty30.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN VÒNG XANH</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">10-15 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty4.png" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY TNHH BEST LOGISTICS TECHNOLOGY (VIỆT NAM)</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">40-45 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="container_high-paying-jobsitem">
-                                    <img src="./asset/img/logocty3.jpg" alt="">
-                                    <div class="container_company">
-                                        <div style=" margin-top: 8px;">
-                                            <h3 class="container_company-name">CÔNG TY CỔ PHẦN PPA HOLDING</h3>
-                                        </div>
-                                        <div style="display: flex;">
-                                            <div style="display: flex;">
-                                                <p class="container_company-wage">Trên 10 triệu</p>
-                                                <p class="container_company-wage">Hà Nội</p>
-                                            </div>
-                                            <i class="ti-heart" style="display: flex; align-items: center; margin-left: 12px;"></i>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                <?php endforeach?>
                             </ul>
                         </div>
                     </div>

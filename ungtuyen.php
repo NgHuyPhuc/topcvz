@@ -46,8 +46,10 @@ require_once(__DIR__ . '/lib/autoload.php');
         <tr>
             <th></th>
             <th>Vị trí</th>
+            <th>Công việc</th>
             <th>Công ty</th>
             <!-- <th>Ngày ứng tuyển</th> -->
+            
             <th>CV đã nộp</th>
             <th>Trạng thái</th>
         </tr>
@@ -57,6 +59,7 @@ require_once(__DIR__ . '/lib/autoload.php');
                 <tr>
                     <td><a href="<?php echo $base_url?>modules/xoacv.php?id=<?php echo $item['IdJobCV']?>">Xóa</a></td>
                     <td><?php echo $item['CapBac']?></td>
+                    <td><?php echo $item['Job']?></td>
                     <td><?php echo $item['NameOfCompany']?></td>
                     <!-- <td>18/06/2022</td> -->
                     <td>Trực tuyến</td>

@@ -64,13 +64,21 @@
         if ($check) {
             $data["Avatar"] = "public/userimg/" . $file_name;
         }
+        // $update = $db->update('infocv', $data, array('IdInfoCV' => $id));
+        // if ($update > 0) {
+        //     $_SESSION['error'] = "sửa thành công";
+        //     header("location:./ttcanhan.php");
+        // } else{
+        //     $_SESSION['error'] = "không thành công";
+        // }
+
         $update = $db->update('infocv', $data, array('IdInfoCV' => $id));
         if ($update > 0) {
+            // header('Location: ./ttcanhan.php');
             $_SESSION['error'] = "sửa thành công";
-            header('Location: ./ttcanhan.php');
-        } else
-            header('Location: ./ngu.php');
-        $_SESSION['error'] = "không thành công";
+        } else{
+            $_SESSION['error'] = "không thành công";
+        }
     }
     ?>
 </head>
