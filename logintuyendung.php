@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-      require_once(__DIR__ . './lib/autoload.php');
+<?php
+    require_once(__DIR__ .'/layout/head.php')
     ?>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login tuyển dụng</title>
-    <link rel="stylesheet" href="./asset/font/themify-icons-font/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="./asset/css/Chung.css">
-    <link rel="stylesheet" href="./asset/css/lgtuyendung.css">
-   
+    <title>Login</title>
 </head>
 <?php
   if(isset($_SESSION['logintuyendung'])){
@@ -43,32 +36,54 @@
 }
   ?>
 <body>
-    <div class="half">
-        <form action="" method="POST">
-            <div class="content">
-                <h3>Login to <strong>Tuyển Dụng</strong></h3>
+    <div class="full_web">
+        <div class="grid grid_lg-flex">
+            <div class="grid_lg1">
+                <a href="./index.php" class="">
+                    <img src="./asset/img/logo.png" alt="">
+                </a>
 
-                <div class="main">
-                    <h4>UserName</h4>
-                    <input name="UserName" type="text" placeholder="Tài khoản ">
+                <div class="grid_lg1-title">
+                    <h2>Chào mừng bạn quay trở lại</h2>
+                    <p>Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự nghiệp lí tưởng</p>
                 </div>
+                <form method="POST" action="">
+                <div class="grid_lg1-form">
+                    <h3>
+                        <i class="ti-email"></i>
+                        Email
+                    </h3>
+                    <input type="text" name="UserName" class="grid_lg1-form-Log"  placeholder="Nhập email">
 
-                <div class="main">
-                    <h4>PassWord</h4>
-                    <input name="Password" type="password" placeholder="Mật khẩu ">
+                    <h3>
+                        <i class="ti-lock"></i>
+                        Mật khẩu</h3>
+                    <input type="password" name="Password" class="grid_lg1-form-Log"  placeholder="Nhập mật khẩu">
                 </div>
-                <div style="display:flex ; justify-content:space-between; text-align:center; margin: 15px 0;">
-                    <div style="display: flex;">
-                        <input type="checkbox" name="" value="" id="" > 
-                        <h3 style="font-size: 1.3rem; margin: 0;">Remember Me</h3>
-                    </div>
-                    <a href="<?php echo $base_url ?>dkytktuyendung/dky.php">Đăng ký tk mới</a>
-                    <a href="">forgot pass</a>
-                </div>
+                <button type="submit" class="grid_lg1-btn">Đăng Nhập</button>
+                </form>
 
-                <button value="Login">Login</button>
-            </div>      
-        </form>  
+                <ul class="grid_lg1-mxh">
+                    <li class="grid_lg1-item" ><a href="" style="background-color: #365899;">
+                        <i class="ti-facebook"></i>Facebook
+                    </a></li>
+                    <li class="grid_lg1-item"><a href="" style="background-color:#ea4335;">
+                        <i class="ti-google"></i>Google
+                    </a></li>
+                    <li class="grid_lg1-item" ><a href="" style="background-color:#056497;">
+                        <i class="ti-linkedin"></i>Linkedin
+                    </a></li>
+                </ul>
+
+                <div class="grid_lg1-question">
+                    <p>Bạn chưa có tài khoản?<a href="./dkytktuyendung/dky.php"> Đăng ký ngay</a></p>
+                    <a href="./repass.php" class="">Quên mật khẩu</a>
+                </div>
+            </div>
+            <div class="grid_lg2">
+            </div>
+            
+        </div>
     </div>
 </body>
 </html>
